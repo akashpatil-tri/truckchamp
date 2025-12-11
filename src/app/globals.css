@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primarylight: #baba9e;
+  --color-primary: #d74315;
+  --color-primarydarklight: #8aac97;
+  --color-greendarklight: #bad4b7;
+  --color-primarygray: #6b6b6b;
+  --color-primarygraydark: #585b5d;
+  --color-surfacedark: #dde1e8;
+  --color-surface: #e8ecf3;
+  --color-surfacelight: #f8fbff;
+  --color-surfacelittlelight: #f9f9f9;
+  --color-blacklightdark: #1b1b1b;
+  --color-blackdark: #2e3139;
+  --color-blackdarklight: #344256;
+  --color-gray: #f6f5f4;
+  --color-graylight: #f9fafb;
+  --color-graylightdark: #f8f8f8;
+  --color-greenlight: #effff0;
+  --color-red: #ff513f;
+  --color-green: #08a045;
+  --color-greendarklight: #16b364;
+  --color-blue: #4c40f7;
+  --color-bluelight: #4c40f70f;
+  --color-redlight: #ff513f0f;
+  --color-redextralight: #ffe7e4;
+  --color-reddark: #e74f48;
+  --color-yellow: #ffc030;
+  --color-yellowdarklight: #faf0dc;
+  --color-yellowlight: #fef6e9;
+  --color-yellowextralight: #fffce4;
+  --color-purplelight: #f6efff;
+  --color-purple: #8e4ffa;
+  --color-purpledark: #7037b4;
+  --color-lightblue: #4f85fa;
+  --color-lightgreen: #32af79;
+  --color-orangelight: #ffefef;
+  --color-bluedark: #409ff7;
+  --color-greenlightlittle: #16b364;
+  --color-orange: #ff7f30;
+
+  /* Spacing - Padding */
+  --spacing-120px: 120px;
+  --spacing-104px: 104px;
+  --spacing-100px: 100px;
+  --spacing-60px: 60px;
+  --spacing-38px: 38px;
+  --spacing-30px: 30px;
+  --spacing-18px: 18px;
+  --spacing-17px: 17px;
+  --spacing-7px: 7px;
+  --spacing-5px: 5px;
+  --spacing-3px: 3px;
+  --spacing-1px: 1px;
+  --spacing-134px: 134px;
+  --spacing-35px: 35px;
+  --spacing-46px: 46px;
+  --spacing-34px: 34px;
+  --spacing-22px: 22px;
+  --spacing-25px: 25px;
+
+  /* Border Radius */
+  --radius-20px: 20px;
+  --radius-10px: 10px;
+  --radius-3px: 3px;
+
+  /* Font Sizes */
+  --font-size-140px: 140px;
+  --font-size-64px: 64px;
+  --font-size-32px: 32px;
+  --font-size-28px: 28px;
+  --font-size-22px: 22px;
+  --font-size-15px: 15px;
+  --font-size-13px: 13px;
+  --font-size-10px: 10px;
+
+  /* Line Heights */
+  --line-height-44px: 44px;
+  --line-height-29px: 29px;
+  --line-height-22px: 22px;
+  --line-height-21px: 21px;
+  --line-height-18px: 18px;
+  --line-height-14px: 14px;
+
+  /* Font Family */
+  --font-family-nunito: Nunito, sans-serif;
+
+  /* Widths */
+  --width-1000px: 1000px;
+  --width-500px: 500px;
+  --width-478px: 478px;
+  --width-471px: 471px;
+  --width-464px: 464px;
+  --width-434px: 434px;
+  --width-423px: 423px;
+  --width-387px: 387px;
+  --width-363px: 363px;
+  --width-360px: 360px;
+  --width-336px: 336px;
+  --width-332px: 332px;
+  --width-300px: 300px;
+  --width-280px: 280px;
+  --width-270px: 270px;
+  --width-200px: 200px;
+  --width-196px: 196px;
+  --width-108px: 108px;
+  --width-100px: 100px;
+  --width-90px: 90px;
+  --width-84px: 84px;
+  --width-60px: 60px;
+  --width-55px: 55px;
+  --width-52px: 52px;
+  --width-50px: 50px;
+  --width-30px: 30px;
+  --width-22px: 22px;
+  --width-18px: 18px;
+  --width-1px: 1px;
+  --width-90\%: 90%;
+  --width-85\%: 85%;
+  --width-70\%: 70%;
+  --width-30\%: 30%;
+
+  /* Heights */
+  --height-640px: 640px;
+  --height-617px: 617px;
+  --height-478px: 478px;
+  --height-336px: 336px;
+  --height-196px: 196px;
+  --height-108px: 108px;
+  --height-90px: 90px;
+  --height-84px: 84px;
+  --height-60px: 60px;
+  --height-55px: 55px;
+  --height-52px: 52px;
+  --height-50px: 50px;
+  --height-30px: 30px;
+  --height-22px: 22px;
+  --height-18px: 18px;
+  --height-3px: 3px;
+  --height-1px: 1px;
+
+  /* Min Heights */
+  --min-height-250px: 250px;
+  --min-height-190px: 190px;
+  --min-height-50px: 50px;
+  --min-height-18px: 18px;
+
+  /* Max Heights */
+  --max-height-500px: 500px;
+  --max-height-443px: 443px;
+  --max-height-400px: 400px;
+  --max-height-246px: 246px;
+  --max-height-180px: 180px;
+
+  /* Min Widths */
+  --min-width-18px: 18px;
+
+  /* Max Widths */
+  --max-width-910px: 910px;
+  --max-width-699px: 699px;
+  --max-width-661px: 661px;
+  --max-width-640px: 640px;
+  --max-width-501px: 501px;
+  --max-width-498px: 498px;
+  --max-width-464px: 464px;
+  --max-width-438px: 438px;
+  --max-width-434px: 434px;
+  --max-width-368px: 368px;
+  --max-width-347px: 347px;
+  --max-width-300px: 300px;
+  --max-width-280px: 280px;
+  --max-width-260px: 260px;
+  --max-width-125px: 125px;
+
+  /* Border Width */
+  --border-width-3: 3px;
+
+  /* Opacity */
+  --opacity-27: 0.27;
+  --opacity-14: 0.14;
+  --opacity-12: 0.12;
+  --opacity-6: 0.06;
+
+  /* Box Shadows */
+  --shadow-content: 0px 10px 30px 0px #0000004d;
+  --shadow-surfaceshadow: 0px 3px 35px 0px #00000033;
+  --shadow-dropdown: 0px 3px 25px 0px #0000001a;
+  --shadow-cardshadow: 0px 0px 24px 0px #0000000f;
+  --shadow-menupopup: 0px 0px 24px 5px #dddddd;
+  --shadow-therapistdashbaordcard: 0px 3px 40px 0px #0000000f;
+  --shadow-calenderheader: 0px 2px 7px 0px #0000001a;
+  --shadow-calendermodal: 0px 0px 40px 5px #0000004d;
+  --shadow-progresstracker: 0px 0px 24px 0px #0000000f;
+  --shadow-progresstooltip: 0px 10px 30px 0px #0000004d;
+
+  /* Drop Shadow */
+  --drop-shadow-content: 0.05em 0.05em rgba(0, 0, 0, 0.25);
+
+  /* Animations */
+  --animate-skeleton: skeleton 1500ms linear 2s infinite;
+  --animate-notfound: notfound 2s alternate infinite linear;
+  --animate-astronaut: astronautFly 12s linear infinite;
+  --animate-starfloat: starfloat 12s linear infinite;
+}
+
+/* Keyframes */
+@keyframes skeleton {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@keyframes notfound {
+  0% {
+    transform: translateY(0.15em) scaleY(0.95);
+  }
+  100% {
+    transform: translateY(-0.15em);
+  }
+}
+
+@keyframes astronautFly {
+  0% {
+    left: 0px;
+  }
+  25% {
+    bottom: 25%;
+    transform: rotate(0deg);
+  }
+  50% {
+    bottom: 50%;
+    transform: rotate(45deg);
+  }
+  75% {
+    bottom: 75%;
+    transform: rotate(-60deg);
+  }
+  100% {
+    left: 100%;
+    bottom: 100%;
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes starfloat {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-120vw);
+    opacity: 0;
+  }
+}
