@@ -1,11 +1,8 @@
-// src/app/(auth)/page.tsx
-import React from "react";
-import Link from "next/link";
-import Icon from "@/components/common/Icon/page";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
-// The LoginForm is interactive — import as a client component.
-// dynamic import not required, but keeps the page clearly server -> client separation.
+import Icon from "@/components/common/Icon/page";
+
 const LoginForm = dynamic(() => import("@/components/forms/LoginForm"), {
   ssr: true,
 });
@@ -28,15 +25,12 @@ export default function LoginPage() {
             name="logo"
             className="w-full max-w-[400px] mx-auto mb-4 flex justify-center items-center"
           />
-          <h2 className="text-6xl sm:text-3xl text-blackdark mb-2 tracking-wide">
+          <h2 className="lg:text-[71px] sm:text-3xl text-blackdark mb-2 tracking-wide">
             Truck
-            <span className="text-6xl sm:text-3xl font-bold text-primary">
+            <span className="lg:text-[71px] sm:text-3xl font-bold text-primary">
               Match
             </span>
           </h2>
-          <p className="mt-4 text-sm text-primarygray max-w-[380px] text-center">
-            Manage your fleet, drivers, and jobs efficiently in one place.
-          </p>
         </div>
       </div>
 

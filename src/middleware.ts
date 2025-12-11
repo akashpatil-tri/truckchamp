@@ -1,7 +1,5 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
-// Define the protected routes
 const protectedRoutes = ["/dashboard", "/profile", "/"];
 const publicRoutes = ["/login", "/signup", "/"];
 

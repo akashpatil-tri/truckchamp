@@ -9,8 +9,9 @@ import {
 import clsx from "clsx";
 import _ from "lodash";
 
+import Icon from "@common/Icon/page";
+
 import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
-import Icon from "../Icon/page";
 
 export type IconNameType =
   | "queue"

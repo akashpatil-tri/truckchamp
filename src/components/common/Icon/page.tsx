@@ -1,9 +1,11 @@
 import type { MouseEventHandler, SVGAttributes } from "react";
-import Image from "@common/Image/page";
-import Spinner from "../Spinner/page";
 
-import truckMatchLogo from "@/assets/svg/truckMatchLogo.svg";
+import Image from "@common/Image/page";
+import Spinner from "@common/Spinner/page";
+
 import headset from "@/assets/svg/headset.svg";
+import truckMatchLogo from "@/assets/svg/truckMatchLogo.svg";
+
 // import AddFilled from "@/assets/svg/AddFilled.svg?react";
 // import AddUser from "@/assets/svg/AddUser.svg?react";
 // import AdminStaff from "@/assets/svg/AdminStaff.svg?react";

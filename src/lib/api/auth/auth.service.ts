@@ -1,27 +1,38 @@
-// src/lib/api/auth.service.ts
-import { LoginFormData } from "@/lib/schemas/auth.schema";
+import apiClient, { ApiResponse } from "../client";
 
-export async function loginApi(data: LoginFormData) {
-  const res = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    // keep credentials if your API sets cookies:
-    credentials: "include",
-    body: JSON.stringify(data),
-  });
+import { User, type LoginRequest, type LoginResponse } from "./auth.types";
 
-  const payload = await res.json().catch(() => ({}));
+export const authService = {
+  // Login
+  login: async (data: LoginRequest): Promise<LoginResponse> => {
+    const response = await apiClient.post<ApiResponse<LoginResponse>>(
+      "/auth/login",
+      data
+    );
+    return response.data.data;
+  },
 
-  if (!res.ok) {
-    const message = payload?.message ?? "Login failed";
-    const error = new Error(message) as Error & {
-      status: number;
-      payload: unknown;
-    };
-    error.status = res.status;
-    error.payload = payload;
-    throw error;
-  }
+  // Logout
+  logout: async (): Promise<void> => {
+    await apiClient.post("/auth/logout");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+    }
+  },
 
-  return payload;
-}
+  // Forgot password
+  forgotPassword: async (email: string): Promise<void> => {
+    await apiClient.post("/auth/forgot-password", { email });
+  },
+
+  // Reset password
+  resetPassword: async (token: string, password: string): Promise<void> => {
+    await apiClient.post("/auth/reset-password", { token, password });
+  },
+
+  // Get current user
+  getCurrentUser: async () => {
+    const response = await apiClient.get<ApiResponse<User>>("/auth/me");
+    return response.data.data;
+  },
+};

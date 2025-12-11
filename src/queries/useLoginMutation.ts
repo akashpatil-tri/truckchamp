@@ -1,11 +1,13 @@
 // src/queries/useLoginMutation.ts
 import { useMutation } from "@tanstack/react-query";
-import { loginApi } from "@api/auth/auth.service";
+
+import { authService } from "@api/auth/auth.service";
+
 import type { LoginFormData } from "@/lib/schemas/auth.schema";
 
 export function useLoginMutation() {
   return useMutation({
-    mutationFn: (data: LoginFormData) => loginApi(data),
+    mutationFn: (data: LoginFormData) => authService.login(data),
     onError: (err) => {
       // Optional: centralized error handling (toast, analytics)
       console.error("Login mutation error:", err);
