@@ -9,7 +9,9 @@ export const authService = {
       "/auth/login",
       data
     );
-    return response.data.data;
+    console.log("response", response);
+    alert("1");
+    return response.data;
   },
 
   // Logout

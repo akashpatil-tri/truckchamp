@@ -22,16 +22,16 @@ export function middleware(request: NextRequest) {
   const isAuthenticated = token ? isValidToken(token) : false;
 
   // Redirect unauthenticated users trying to access protected routes
-  if (isProtectedRoute && !isAuthenticated) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("redirect", path); // Save intended destination
-    return NextResponse.redirect(loginUrl);
-  }
+  // if (isProtectedRoute && !isAuthenticated) {
+  //   const loginUrl = new URL("/login", request.url);
+  //   loginUrl.searchParams.set("redirect", path); // Save intended destination
+  //   return NextResponse.redirect(loginUrl);
+  // }
 
-  // Redirect authenticated users away from auth pages
-  if (isAuthRoute && isAuthenticated) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
+  // // Redirect authenticated users away from auth pages
+  // if (isAuthRoute && isAuthenticated) {
+  //   return NextResponse.redirect(new URL("/dashboard", request.url));
+  // }
 
   return NextResponse.next();
 }

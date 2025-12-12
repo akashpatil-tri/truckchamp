@@ -1,3 +1,5 @@
+import { Toaster } from "react-hot-toast";
+
 import QueryProvider from "@providers/QueryProvider";
 
 import type { Metadata } from "next";
@@ -5,6 +7,7 @@ import type { Metadata } from "next";
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@app/globals.css";
+import "@app/header.css";
 import "@styles/style.css";
 import "@styles/media.css";
 
@@ -28,7 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          {children}
+          <Toaster />
+        </QueryProvider>
       </body>
     </html>
   );
