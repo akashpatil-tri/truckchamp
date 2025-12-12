@@ -1473,7 +1473,19 @@ select::-webkit-autofill:focus {
   .select2-selection__arrow {
   height: 35px;
 }
-
+/* .select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow
+  b::before {
+  content: "";
+  background: url(../images/arrow-down.svg) 0px 0px / 10px 6px no-repeat !important;
+  width: 10px;
+  height: 6px;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+} */
 .select2-container--default
   .select2-selection--single
   .select2-selection__arrow
@@ -1574,8 +1586,8 @@ select::-webkit-autofill:focus {
   top: 0;
   left: 0;
   background: #d74315 url(../images/arrow-left.svg) center / 12px 8px no-repeat;
-} */
-/* .bootstrap-datetimepicker-widget .datepicker table th.next::after {
+}
+.bootstrap-datetimepicker-widget .datepicker table th.next::after {
   right: 0;
   top: 0;
   background: #d74315 url(../images/arrow-right.svg) center / 12px 8px no-repeat;

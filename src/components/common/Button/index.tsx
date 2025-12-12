@@ -1,3 +1,4 @@
+// components/common/Button.tsx
 import React, { type ReactNode } from "react";
 
 import clsx from "clsx";
@@ -18,7 +19,7 @@ export interface ButtonProps {
   isActive?: boolean;
   titleClassName?: string;
   type?: "submit" | "reset" | "button";
-  variant: "filled" | "outline" | "none";
+  variant?: "filled" | "outline" | "none";
   isDisabled?: boolean;
   isLoading?: boolean;
   children?: ReactNode;
@@ -28,6 +29,11 @@ export interface ButtonProps {
   style?: React.CSSProperties;
 }
 
+/**
+ * Plain, tailwind-free Button component.
+ * - 'variant' controls visual style.
+ * - 'className' allows custom CSS to override the default look.
+ */
 export const Button = ({
   isLink = false,
   href,
@@ -35,7 +41,7 @@ export const Button = ({
   title,
   icon = false,
   isIconFirst = false,
-  variant,
+  variant = "filled",
   onClick,
   isActive = false,
   titleClassName,
@@ -48,43 +54,83 @@ export const Button = ({
   parentClassName,
   style,
 }: ButtonProps) => {
+  // if you want to render a link, handle it here (we keep it simple)
+  if (isLink && href) {
+    // Returning null to avoid changing behaviour — replace with <Link> if needed.
+    return null;
+  }
+
   const classes = clsx(
-    className,
-    "group font-normal inline-flex items-center sm:text-base text-sm justify-center gap-2 sm:py-3.5 py-2.5 sm:px-3.5 px-2 leading-none rounded transition-all duration-300 cursor-pointer",
+    "btn",
     {
-      "select-none": isActive || isLoading,
-      "bg-primary text-white hover:bg-primary/85 border border-primary hover:border-primary/75":
-        variant === "filled",
-      "border border-primarygray text-primarygray bg-white hover:bg-Gray":
-        variant === "outline",
-      "opacity-50 cursor-not-allowed": isDisabled || isLoading,
-    }
+      "btn--filled": variant === "filled",
+      "btn--outline": variant === "outline",
+      "btn--none": variant === "none",
+      "is-loading": isLoading,
+      "is-disabled": isDisabled || isLoading,
+    },
+    className
   );
 
-  if (isLink && href) return null; // Can replace this with <Link> if using Next.js
-
   return (
-    <div className={clsx("relative", parentClassName)}>
+    <div
+      className={clsx("btn-wrapper", parentClassName)}
+      style={{ position: "relative" }}
+    >
       <button
-        style={style}
-        onClick={onClick}
-        type={type}
         id={id}
-        className={classes}
         ref={buttonRef}
-        disabled={isDisabled}
+        type={type}
+        onClick={onClick}
+        className={classes}
+        style={style}
+        disabled={isDisabled || isLoading}
+        aria-disabled={isDisabled || isLoading}
       >
-        {children}
-        {isLoading ? (
-          <span className="relative h-4 w-4 border-[3px] border-gray-900 border-b-white rounded-full block animate-spin" />
-        ) : isIconFirst && icon ? (
-          <span>{icon}</span>
+        {/* icon first */}
+        {isIconFirst && icon && (
+          <span className="btn__icon btn__icon--first">{icon}</span>
+        )}
+
+        {/* title if provided */}
+        {title ? (
+          <span className={clsx("btn__title", titleClassName)}>{title}</span>
         ) : null}
-        {title && <span className={titleClassName}>{title}</span>}
-        {!isIconFirst && icon ? <span className="text-lg">{icon}</span> : null}
+
+        {/* children fallback */}
+        {!title && children}
+
+        {/* icon last */}
+        {!isIconFirst && icon && <span className="btn__icon">{icon}</span>}
       </button>
+
+      {/* loading spinner / overlay */}
       {(isDisabled || isLoading) && (
-        <div className="absolute inset-0 bg-transparent z-50 cursor-not-allowed"></div>
+        <div
+          className="btn-overlay"
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: 8,
+            pointerEvents: "none",
+          }}
+        />
+      )}
+
+      {isLoading && (
+        <div
+          className="btn-spinner"
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            right: 12,
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <span className="btn-spinner-dot" />
+        </div>
       )}
     </div>
   );

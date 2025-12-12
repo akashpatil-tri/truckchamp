@@ -1,31 +1,67 @@
+// middleware.ts
 import { NextResponse, type NextRequest } from "next/server";
 
-const protectedRoutes = ["/dashboard", "/profile", "/"];
-const publicRoutes = ["/login", "/signup", "/"];
+const protectedRoutes = ["/dashboard", "/profile"];
+
+const authRoutes = ["/login", "/signup"]; // Routes that authenticated users shouldn't access
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.includes(path);
-  const isPublicRoute = publicRoutes.includes(path);
 
-  // Check if a session cookie exists (optimistic check)
-  const sessionCookie = request.cookies.get("session")?.value;
+  // Get token from cookie or header
+  const token =
+    request.cookies.get("authToken")?.value ||
+    request.headers.get("authorization")?.replace("Bearer ", "");
 
-  if (isProtectedRoute && !sessionCookie) {
-    // Redirect unauthenticated users to the login page
-    return NextResponse.redirect(new URL("/login", request.url));
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    path.startsWith(route)
+  );
+  const isAuthRoute = authRoutes.some((route) => path.startsWith(route));
+
+  // Validate token
+  const isAuthenticated = token ? isValidToken(token) : false;
+
+  // Redirect unauthenticated users trying to access protected routes
+  if (isProtectedRoute && !isAuthenticated) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("redirect", path); // Save intended destination
+    return NextResponse.redirect(loginUrl);
   }
 
-  if (isPublicRoute && sessionCookie && path !== "/dashboard") {
-    // Redirect authenticated users away from login/signup pages
+  // Redirect authenticated users away from auth pages
+  if (isAuthRoute && isAuthenticated) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return NextResponse.next();
 }
 
-// See "Matching Paths" documentation for more details on advanced matchers
+function isValidToken(token: string): boolean {
+  try {
+    // Decode JWT payload
+    const payload = JSON.parse(atob(token.split(".")[1]));
+
+    // Check if token is expired
+    if (payload.exp && payload.exp * 1000 < Date.now()) {
+      return false;
+    }
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export const config = {
-  // Match all routes except those for static files and API routes that don't need auth checks
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  matcher: [
+    /*
+     * Match all request paths except:
+     * - api routes
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     * - public files (images, etc.)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:jpg|jpeg|gif|png|svg|ico|webp)).*)",
+  ],
 };

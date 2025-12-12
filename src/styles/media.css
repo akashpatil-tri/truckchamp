@@ -1,0 +1,2243 @@
+/*=========================================================
+Large devices 
+===========================================================*/
+
+@media (max-width: 1899px) {
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    font-size: 11px !important;
+    padding: 5px 10px;
+    right: 12px;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-box.td-details-box-btn {
+    padding: 12px;
+    padding-right: 115px;
+  }
+  .box-count-top-wrap {
+    padding: 15px 15px;
+  }
+  .box-count-bottom {
+    padding: 14px 15px;
+  }
+  .box-count-br-num {
+    padding-right: 4px !important;
+  }
+  .box-count-br {
+    padding: 5px !important;
+  }
+  .box-count-br .box-count-br-txt {
+    font-size: 14px !important;
+  }
+  .box-count-br .box-count-br-num {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 1799px) {
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    font-size: 10px !important;
+    right: 10px;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-box.td-details-box-btn {
+    padding: 10px;
+    padding-right: 105px;
+  }
+  .box-count-top-wrap {
+    padding: 12px;
+  }
+  .box-count-bottom {
+    padding: 12px;
+  }
+  .box-count-br .box-count-br-txt {
+    font-size: 12px !important;
+  }
+  .box-count-br .box-count-br-num {
+    font-size: 18px !important;
+  }
+
+  .content-wrapper {
+    margin-top: 104px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: calc(250px + 20px);
+    min-height: calc(100vh - 87px);
+  }
+  .sidebar-show-hide .content-wrapper {
+    margin-left: calc(64px + 20px);
+  }
+}
+
+@media (max-width: 1699px) {
+  .box-count-br .box-count-br-txt {
+    font-size: 12px !important;
+  }
+  .box-count-br .box-count-br-num {
+    font-size: 16px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-box.td-details-box-btn {
+    padding: 10px 6px;
+    padding-right: 94px;
+  }
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    right: 6px;
+  }
+}
+
+@media (max-width: 1599px) {
+  h1,
+  .h1 {
+    font-size: 34px;
+  }
+  h2,
+  .h2 {
+    font-size: 24px;
+  }
+  h3,
+  .h3 {
+    font-size: 22px;
+  }
+  h4,
+  .h4 {
+    font-size: 18px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .fs-14 {
+    font-size: 13px !important;
+  }
+  .fs-16 {
+    font-size: 15px !important;
+  }
+  .fs-18 {
+    font-size: 17px !important;
+  }
+  .fs-20 {
+    font-size: 19px !important;
+  }
+  .fs-22 {
+    font-size: 21px !important;
+  }
+  .fs-26 {
+    font-size: 24px !important;
+  }
+
+  .form-control.border {
+    height: 45px;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  .form-control.border::placeholder {
+    font-size: 13px;
+  }
+  .form-control.border::-moz-placeholder {
+    font-size: 13px;
+  }
+  .form-control.border:-ms-input-placeholder {
+    font-size: 13px;
+  }
+  .form-control.border::-webkit-input-placeholder {
+    font-size: 13px;
+  }
+  .form-control.border::-o-input-placeholder {
+    font-size: 13px;
+  }
+
+  .custom-table-main th {
+    padding: 15px 15px 10px;
+    font-size: 15px;
+  }
+  .custom-table-main td {
+    padding: 15px 15px;
+    font-size: 13px;
+  }
+  .custom-table-main tr:last-child td {
+    font-size: 15px;
+  }
+  .custom-table-main tr:last-child td:last-child {
+    font-size: 19px;
+  }
+
+  .min-width-210 {
+    min-width: 180px;
+  }
+  .min-width-100 {
+    min-width: 80px;
+  }
+  .min-width-130 {
+    min-width: 110px;
+  }
+  .min-width-150 {
+    min-width: 130px;
+  }
+
+  .offcanvas-btn.btn {
+    font-size: 14px;
+    padding: 11px 20px;
+  }
+
+  /*====Select2====*/
+
+  .select2-custom .select2-container .select2-selection {
+    height: 45px;
+  }
+  .select2-custom
+    .select2-container
+    .select2-selection
+    .select2-selection__rendered {
+    height: 43px;
+    line-height: 43px;
+  }
+  .select2-custom
+    .select2-container
+    .select2-selection
+    .select2-selection__arrow {
+    height: 43px;
+  }
+  .select2-custom
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__clear {
+    height: 43px;
+  }
+
+  /*=== Login ===*/
+
+  .login-sec-cu-btn.btn {
+    font-size: 16px;
+    padding: 8px 13px 7px 13px;
+  }
+  .login-sec-cu-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: -2px;
+  }
+  .btn {
+    font-size: 15px;
+    padding: 9px 14px 8px 14px;
+    min-width: 180px;
+  }
+  .login-sec-cu-btn-wrap {
+    padding-bottom: 80px;
+  }
+  /* .logo-form-wid {
+    max-width: 460px;
+  } */
+  .login-cform-main p {
+    font-size: 14px;
+  }
+  label.form-label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .login-form-btn-wrap {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+  .password-icon i {
+    font-size: 16px;
+    height: 16px;
+    right: 12px;
+  }
+  .password-icon .form-control {
+    padding-right: 35px !important;
+  }
+  .ft-links-main {
+    bottom: 55px;
+  }
+  .login-cform-main {
+    height: calc(100% - 124px);
+  }
+  .login-form-forpass-link {
+    font-size: 14px;
+  }
+  .ft-links a {
+    font-size: 14px;
+  }
+  .login-sec-logo img {
+    max-width: 371px;
+  }
+  .login-sec-right-con {
+    padding: 20px 35px 0px;
+  }
+  .form-mobile-num .country-code {
+    top: 15px;
+  }
+  .profile-preview {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-preview .imageUpload-review {
+    width: 120px;
+    height: 120px;
+  }
+
+  /*== Dashboard ==*/
+
+  .content-wrapper {
+    margin-top: 87px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: calc(250px + 20px);
+    min-height: calc(100vh - 87px);
+  }
+
+  .box-count-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .box-count-icon img {
+    width: 25px;
+    height: 25px;
+  }
+  .box-count-txt-wrap {
+    width: calc(100% - 60px);
+  }
+  .box-count-head {
+    font-size: 24px;
+  }
+  .box-count-shead {
+    font-size: 14px;
+  }
+  .job-card-title-space {
+    padding: 8px 15px;
+  }
+  .box-count-bottom a {
+    font-size: 16px;
+  }
+  .job-card-title-t {
+    font-size: 16px;
+  }
+  .job-card-title-link {
+    font-size: 14px;
+  }
+  .job-card-txt-t {
+    font-size: 16px;
+  }
+  .job-card-txt-wrap {
+    padding: 15px 15px;
+  }
+  .job-card-txt-wrap {
+    height: 300px;
+  }
+  .job-card-title {
+    padding: 8px 15px;
+  }
+
+  .notification-head {
+    padding: 6px 15px;
+  }
+  .notification-here {
+    padding: 15px 15px;
+  }
+  .notification-here-icon {
+    width: 35px;
+    height: 35px;
+  }
+  .notification-here-wrapt {
+    width: calc(100% - 35px);
+  }
+  .notification-here-tl {
+    font-size: 14px;
+  }
+  .notification-here-btn {
+    padding-left: 60px;
+    padding-bottom: 15px;
+  }
+  .notification-all-link {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+  .notification-main {
+    min-width: 500px;
+  }
+  .btn.notification-here-btn-link {
+    padding: 4px 14px;
+  }
+
+  /* offcanvas start */
+
+  .offcanvas-cm {
+    max-width: 700px !important;
+  }
+  .offcanvas-header-cm {
+    padding: 30px 15px;
+  }
+  .offcanvas-cm .offcanvas-body {
+    padding: 15px;
+  }
+  .offcanvas-op-btn {
+    padding: 20px 15px;
+  }
+  .offcanvas-title {
+    font-size: 22px;
+  }
+  .offcanvas-tl-p {
+    font-size: 16px;
+  }
+  .offcanvas-body-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  /* offcanvas end */
+
+  /* radio start */
+
+  .radio-square-wrap .radio-st-sq + label p {
+    font-size: 14px;
+  }
+  .radio-square-wrap .radio-st-sq + label {
+    padding: 18px 12px;
+  }
+
+  /* radio end */
+
+  .recurr-timing-tl {
+    font-size: 16px;
+  }
+
+  .checkbox-round-wrap .checkbox + label {
+    font-size: 14px;
+    padding: 7px 15px;
+  }
+
+  .content-bbox-tl {
+    font-size: 15px;
+  }
+  .content-bbox-ht {
+    padding: 5px 15px;
+  }
+
+  .srdays-d {
+    font-size: 14px;
+    padding: 6px 18px;
+  }
+
+  /*=== Post New Job ====*/
+
+  .offcanvas-btn1.btn {
+    padding: 6px 25px;
+  }
+  .search-set {
+    width: 45px;
+    height: 45px;
+  }
+  .search-njob {
+    width: calc(100% - 45px);
+  }
+  .btn.btn-outline-bs {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .custom-tabs .nav-link {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+  .custom-tabs .nav-item {
+    margin-right: 5px;
+  }
+  .wh60 {
+    width: 50px;
+    height: 50px;
+  }
+  .wh60-txt {
+    width: calc(100% - 50px);
+  }
+  .stacat {
+    padding: 8px 4px;
+    min-width: 85px;
+    font-size: 13px;
+  }
+  .gray-box.fs-14 {
+    padding: 6px 10px;
+    margin-right: 3px;
+  }
+  .loc-de-timadd {
+    font-size: 12px;
+  }
+  .p-14 {
+    padding: 10px;
+  }
+  .wh50 {
+    width: 40px;
+    height: 40px;
+  }
+  .td-details-tdtxt {
+    width: calc(100% - 40px);
+  }
+  .td-details-nm {
+    width: 40px;
+    height: 40px;
+  }
+  .job-details-pb-catst {
+    padding: 8px 6px;
+    width: 100px;
+  }
+  .loc-de-box-wrapl .loc-de-stet-col {
+    width: 35%;
+  }
+  .loc-de-box-wrapl .loc-de-hr-col {
+    width: 30%;
+  }
+  .new-post-jwrap {
+    height: calc(100vh - (87px + 20px));
+    top: 87px;
+  }
+  .postnjob-tabbing-wrap {
+    height: calc(100% - 188px);
+  }
+  .post-njob-statd-wrap {
+    padding: 10px;
+  }
+  .post-njobby-txt {
+    padding-right: 80px;
+  }
+
+  .rcl-re-acc-wrap .btn {
+    min-width: 84px;
+    padding: 5px 15px;
+  }
+  .btn-unstyled {
+    padding: 5px 15px;
+  }
+  .com-de-rat-wrap {
+    padding: 5px 8px;
+  }
+  .wh70 {
+    width: 60px;
+    height: 60px;
+  }
+  .wh-70-txt {
+    width: calc(100% - 60px);
+  }
+  .cp-1520 {
+    padding: 10px 15px;
+  }
+  .btn.btn-sm {
+    font-size: 13px !important;
+    min-width: 85px !important;
+    padding: 5px 12px !important;
+  }
+  .jc-paypending-rat-wrap {
+    padding: 4px 7px;
+  }
+  .cp-20 {
+    padding: 15px;
+  }
+  .stacat-wrap {
+    top: -15px;
+    right: -15px;
+  }
+  .rcl-nm-tl {
+    padding-right: 35px;
+  }
+
+  .search-njob .form-control.border {
+    font-size: 14px;
+  }
+  .search-njob .form-control.border::placeholder {
+    font-size: 14px;
+  }
+  .search-njob .form-control.border::-moz-placeholder {
+    font-size: 14px;
+  }
+  .search-njob .form-control.border:-ms-input-placeholder {
+    font-size: 14px;
+  }
+  .search-njob .form-control.border::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+  .search-njob .form-control.border::-o-input-placeholder {
+    font-size: 14px;
+  }
+
+  /*== Dashboard with upcoming and all job ====*/
+
+  .wh-44 {
+    width: 34px;
+    height: 34px;
+  }
+  .schedule-days-cal-icon img {
+    width: 14px;
+    height: 14px;
+  }
+  .wh-44-txt {
+    width: calc(100% - 34px);
+    padding-left: 4px !important;
+  }
+
+  /*=== job management (inprogress & payment done) ====*/
+
+  .wh-60 {
+    width: 50px;
+    height: 50px;
+  }
+  .wh-60-txt {
+    width: calc(100% - 50px);
+  }
+
+  /*=== team management empty =====*/
+
+  .new-team-manwrap .postnjob-tabbing-wrap {
+    height: calc(100% - 145px);
+  }
+  .td-detail-box-tm-card-wp .td-details-tdt {
+    font-size: 18px !important;
+  }
+  .td-detail-box-tm-card-wp .td-details-cat {
+    font-size: 14px !important;
+  }
+  .tm-de-et-wrap .btn {
+    padding: 7px 15px;
+  }
+
+  .profile-sets .nav-link {
+    font-size: 14px;
+    padding: 9px 12px;
+  }
+  .btn.btn-primary1 {
+    padding: 6px 14px 5px 14px;
+  }
+  .cp-2015 {
+    padding: 15px;
+  }
+  .wh-90 {
+    width: 70px;
+    height: 70px;
+  }
+  .wh-90-txt {
+    width: calc(100% - 70px);
+  }
+  .btn.btn-lg-cm {
+    min-width: 200px;
+  }
+  .modal-dialog {
+    max-width: 450px;
+  }
+  .asssup-ope-bx {
+    padding: 3px 3px;
+  }
+  .agprd-gete span {
+    font-size: 13px;
+  }
+  .br45 {
+    border-radius: 35px;
+  }
+  .com-de-rat-wrap img {
+    width: 18px;
+    height: 18px;
+  }
+  .com-detynum-wrap {
+    padding-right: 6%;
+  }
+  .gray-box {
+    border-radius: 40px;
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+  .gray-box img {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px !important;
+  }
+  .loc-de-im img {
+    width: 20px;
+    height: 20px;
+  }
+  .loc-de-tadd {
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+  .loc-de-stet-col {
+    padding: 0px 5px;
+  }
+  .loc-de-twrap {
+    padding-left: 5px;
+  }
+  .loc-de-hr-col {
+    padding: 0px 5px;
+  }
+  .gray-box-tl {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .note-wrap-tl {
+    font-size: 13px;
+  }
+  .note-wrap-txt {
+    font-size: 13px;
+  }
+  .td-details-box {
+    padding: 10px;
+  }
+  .td-details-box-wp {
+    min-width: 200px;
+  }
+
+  .td-details-tdt {
+    font-size: 12px !important;
+    margin-bottom: 0px !important;
+  }
+  .td-details-cat {
+    font-size: 10px !important;
+  }
+  .td-details-num {
+    font-size: 10px !important;
+  }
+  .schedule-days-tl {
+    font-size: 12px !important;
+  }
+  .wh-44 {
+    width: 30px;
+    height: 30px;
+  }
+  .wh-44-txt {
+    width: calc(100% - 30px);
+    padding-left: 5px !important;
+  }
+  .schedule-days-dt {
+    font-size: 12px !important;
+  }
+  .tm-de-et-wrap .btn {
+    margin-right: 5px;
+  }
+
+  .selected-fleet-nm {
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+
+  .radio-rounded-wrap .radio + label {
+    font-size: 13px;
+    padding: 8px 12px 8px 35px;
+  }
+  .radio-rounded-wrap .radio + label::before {
+    left: 12px;
+    width: 16px;
+    height: 16px;
+    top: 9px;
+  }
+
+  .checkbox-square-wrap .checkbox + label {
+    font-size: 13px;
+    padding: 8px 12px 8px 35px;
+  }
+  .checkbox-square-wrap .checkbox + label::before {
+    left: 12px;
+    width: 16px;
+    height: 16px;
+    top: 9px;
+  }
+
+  .apple-toggle-wrap label {
+    width: 50px;
+    height: 26px;
+  }
+  .apple-toggle-wrap label::after {
+    width: 20px;
+    height: 20px;
+  }
+
+  /*==== Truck Operator Dashboard ===*/
+
+  .truck-img-wrap .profile-preview {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .truck-img-wrap .profile-preview .imageUpload-review {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .att-box {
+    padding: 6px 10px 5px 10px;
+  }
+  .att-box button {
+    width: 16px;
+    height: 16px;
+  }
+  .upload-drag-drop-file {
+    padding: 15px;
+  }
+
+  .wh-70 {
+    width: 60px;
+    height: 60px;
+  }
+  .wh70-txt {
+    width: calc(100% - 60px);
+  }
+
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    padding: 4px 8px;
+  }
+  .wh-50 {
+    width: 40px;
+    height: 40px;
+  }
+  .wh-50-txt {
+    width: calc(100% - 40px);
+  }
+
+  .wh-65 {
+    width: 50px;
+    height: 50px;
+  }
+  .wh-65-txt {
+    width: calc(100% - 50px);
+  }
+
+  .cb-sm-box {
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 1499px) {
+  h1,
+  .h1 {
+    font-size: 32px;
+  }
+  h2,
+  .h2 {
+    font-size: 22px;
+  }
+  h3,
+  .h3 {
+    font-size: 20px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .fs-14 {
+    font-size: 13px !important;
+  }
+  .fs-16 {
+    font-size: 14px !important;
+  }
+  .fs-18 {
+    font-size: 15px !important;
+  }
+  .fs-20 {
+    font-size: 17px !important;
+  }
+  .fs-22 {
+    font-size: 20px !important;
+  }
+  .fs-26 {
+    font-size: 23px !important;
+  }
+
+  .custom-table-main th {
+    font-size: 14px;
+    padding: 12px;
+  }
+  .custom-table-main td {
+    padding: 12px;
+  }
+  .custom-table-main tr:last-child td:last-child {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 8px 10px 7px 10px;
+  }
+
+  /*=== Login ===*/
+
+  .login-sec-cu-btn-wrap {
+    padding-bottom: 65px;
+  }
+  .login-cform-main {
+    height: calc(100% - 106px);
+  }
+  .login-form-btn-wrap {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+  .ft-links-main {
+    bottom: 45px;
+  }
+  /* .logo-form-wid {
+    max-width: 440px;
+  } */
+  .login-sec-logo img {
+    max-width: 351px;
+  }
+  .login-sec-right-con {
+    padding: 20px 30px 0px;
+  }
+  .btn {
+    font-size: 14px;
+  }
+  .login-sec-cu-btn.btn {
+    font-size: 15px;
+  }
+  .btn {
+    min-width: 170px;
+  }
+
+  /*== Dashboard ==*/
+
+  .content-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: calc(230px + 20px);
+    min-height: calc(100vh - 82px);
+    margin-top: 82px;
+  }
+  .box-count-head {
+    font-size: 22px;
+  }
+  .box-count-bottom a {
+    font-size: 14px;
+  }
+  .job-card-title-t {
+    font-size: 15px;
+  }
+
+  .notification-main {
+    min-width: 450px;
+  }
+
+  /* offcanvas start */
+
+  .offcanvas-cm {
+    max-width: 650px !important;
+  }
+  .offcanvas-header-cm {
+    padding: 20px 15px;
+  }
+  .offcanvas-cm .offcanvas-body {
+    padding: 15px;
+  }
+  .offcanvas-op-btn {
+    padding: 15px 15px;
+  }
+  .offcanvas-title {
+    font-size: 20px;
+  }
+  .offcanvas-tl-p {
+    font-size: 14px;
+  }
+  .offcanvas-body-title {
+    font-size: 16px;
+  }
+
+  /* offcanvas end */
+
+  /* radio start */
+
+  .radio-square-wrap .radio-st-sq + label {
+    padding: 16px 10px;
+  }
+
+  /* radio end */
+
+  /*=== Post New Job ====*/
+
+  .wh60 {
+    width: 45px;
+    height: 45px;
+  }
+  .wh60-txt {
+    width: calc(100% - 45px);
+  }
+  .new-post-jwrap {
+    height: calc(100vh - (82px + 20px));
+    top: 82px;
+  }
+  .btn.btn-outline-bs {
+    font-size: 14px;
+  }
+  .offcanvas-btn1.btn {
+    padding: 6px 20px;
+  }
+  .wh-70 {
+    width: 50px;
+    height: 50px;
+  }
+  .wh-70-txt {
+    width: calc(100% - 50px);
+  }
+
+  /*=== team management empty =====*/
+
+  .td-detail-box-tm-card-wp .td-details-tdt {
+    font-size: 15px !important;
+  }
+  .td-detail-box-tm-card-wp .td-details-cat {
+    font-size: 13px !important;
+  }
+
+  .tm-de-et-wrap .btn {
+    padding: 7px 15px;
+  }
+  .gray-box.fs-14 {
+    padding: 6px 8px;
+  }
+
+  .wh-90 {
+    width: 50px;
+    height: 50px;
+  }
+  .wh-90-txt {
+    width: calc(100% - 50px);
+  }
+  .cp-20 {
+    padding: 15px 15px;
+  }
+
+  /*==== Truck Operator Dashboard ===*/
+
+  .truck-img-wrap .profile-preview {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .truck-img-wrap .profile-preview .imageUpload-review {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .wh70 {
+    width: 50px;
+    height: 50px;
+  }
+  .wh70-txt {
+    width: calc(100% - 50px);
+  }
+
+  .td-details-nm {
+    width: 35px;
+    height: 35px;
+    font-size: 14px !important;
+  }
+  .td-details-tdtxt {
+    width: calc(100% - 35px);
+  }
+
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    padding: 4px 6px;
+    font-size: 11px !important;
+  }
+  .wh-50 {
+    width: 35px;
+    height: 35px;
+  }
+  .wh-50-txt {
+    width: calc(100% - 35px);
+  }
+
+  .wh-65 {
+    width: 40px;
+    height: 40px;
+  }
+  .wh-65-txt {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 1399px) {
+  h1,
+  .h1 {
+    font-size: 30px;
+  }
+  h2,
+  .h2 {
+    font-size: 22px;
+  }
+  h3,
+  .h3 {
+    font-size: 20px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .fs-14 {
+    font-size: 12px !important;
+  }
+  .fs-16 {
+    font-size: 14px !important;
+  }
+  .fs-18 {
+    font-size: 15px !important;
+  }
+  .fs-20 {
+    font-size: 17px !important;
+  }
+  .fs-22 {
+    font-size: 19px !important;
+  }
+  .fs-26 {
+    font-size: 22px !important;
+  }
+
+  /*=== Login ===*/
+
+  /* .logo-form-wid {
+    max-width: 410px;
+  } */
+  .login-cform-main {
+    height: calc(100% - 105px);
+  }
+  .login-sec-logo img {
+    max-width: 331px;
+  }
+  .btn {
+    min-width: 160px;
+  }
+  .profile-preview {
+    width: 110px;
+    height: 110px;
+  }
+  .profile-preview .imageUpload-review {
+    width: 110px;
+    height: 110px;
+  }
+
+  /*== Dashboard ==*/
+
+  .content-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: calc(210px + 15px);
+  }
+
+  .notification-main {
+    min-width: 400px;
+  }
+
+  /* offcanvas start */
+
+  .offcanvas-title {
+    font-size: 18px;
+  }
+
+  /* offcanvas end */
+
+  .tm-de-et-wrap .btn {
+    padding: 7px 10px;
+  }
+  .td-detail-box-tm-card-wp .td-details-tdt {
+    font-size: 14px !important;
+  }
+  .btn.btn-lg-cm {
+    min-width: 150px;
+  }
+  .wh60 {
+    width: 40px;
+    height: 40px;
+  }
+  .wh60-txt {
+    width: calc(100% - 40px);
+  }
+
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    padding: 4px 5px;
+    font-size: 10px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-box.td-details-box-btn {
+    padding: 10px 6px;
+    padding-right: 85px;
+  }
+}
+
+@media (max-width: 1299px) {
+  h1,
+  .h1 {
+    font-size: 28px;
+  }
+  h2,
+  .h2 {
+    font-size: 22px;
+  }
+  h3,
+  .h3 {
+    font-size: 20px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .fs-14 {
+    font-size: 12px !important;
+  }
+  .fs-16 {
+    font-size: 13px !important;
+  }
+  .fs-18 {
+    font-size: 14px !important;
+  }
+  .fs-20 {
+    font-size: 16px !important;
+  }
+  .fs-22 {
+    font-size: 18px !important;
+  }
+  .fs-26 {
+    font-size: 21px !important;
+  }
+
+  /*=== Login ===*/
+
+  /* .logo-form-wid {
+    max-width: 390px;
+  } */
+  .login-sec-logo img {
+    max-width: 311px;
+  }
+
+  /*=== team management empty =====*/
+
+  .mjc-wrap {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  h1,
+  .h1 {
+    font-size: 26px;
+  }
+  h2,
+  .h2 {
+    font-size: 22px;
+  }
+  h3,
+  .h3 {
+    font-size: 20px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .fs-14 {
+    font-size: 12px !important;
+  }
+  .fs-16 {
+    font-size: 13px !important;
+  }
+  .fs-18 {
+    font-size: 14px !important;
+  }
+  .fs-20 {
+    font-size: 15px !important;
+  }
+  .fs-22 {
+    font-size: 17px !important;
+  }
+  .fs-26 {
+    font-size: 20px !important;
+  }
+
+  .form-control.border::placeholder {
+    font-size: 14px;
+  }
+  .form-control.border::-moz-placeholder {
+    font-size: 14px;
+  }
+  .form-control.border:-ms-input-placeholder {
+    font-size: 14px;
+  }
+  .form-control.border::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+  .form-control.border::-o-input-placeholder {
+    font-size: 14px;
+  }
+
+  /*=== Login ===*/
+
+  .login-sec-left-wrap-m {
+    border-radius: 20px;
+  }
+  .btn {
+    border-radius: 40px;
+  }
+  .setacc-form-la label.form-label {
+    font-size: 12px;
+  }
+  .profile-preview {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-preview .imageUpload-review {
+    width: 100px;
+    height: 100px;
+  }
+
+  /*== Dashboard ==*/
+
+  .box-count-icon {
+    width: 50px;
+    height: 50px;
+  }
+  .box-count-head {
+    font-size: 20px;
+  }
+  .box-count-txt-wrap {
+    width: calc(100% - 50px);
+  }
+
+  /*=== Post New Job ====*/
+
+  .loc-de-box-wrapl .loc-de-stet-col {
+    width: 100%;
+  }
+  .loc-de-box-wrapl .loc-de-hr-col {
+    width: 100%;
+    margin: 15px 0px;
+  }
+
+  .assi-fdriver-ww {
+    margin-bottom: 15px;
+  }
+  .assi-fdriver-ww:last-child {
+    margin-bottom: 0px;
+  }
+
+  .td-details-box-main .td-details-box-wp .td-details-box.td-details-box-btn {
+    padding-right: 6px;
+  }
+  .td-details-box-main
+    .td-details-box-wp
+    .td-details-box.td-details-box-btn
+    .red-btn1 {
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    position: relative;
+    transform: none;
+    margin-top: 10px;
+  }
+}
+
+/*=========================================================
+// Medium devices (tablets, less than 992px)
+===========================================================*/
+
+@media (max-width: 991.98px) {
+  h1,
+  .h1 {
+    font-size: 26px;
+  }
+  h2,
+  .h2 {
+    font-size: 20px;
+  }
+  h3,
+  .h3 {
+    font-size: 18px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .fs-14 {
+    font-size: 12px !important;
+  }
+  .fs-16 {
+    font-size: 13px !important;
+  }
+  .fs-18 {
+    font-size: 14px !important;
+  }
+  .fs-20 {
+    font-size: 15px !important;
+  }
+  .fs-22 {
+    font-size: 17px !important;
+  }
+  .fs-26 {
+    font-size: 19px !important;
+  }
+
+  /*=== Login ===*/
+
+  .login-sec-logo img {
+    max-width: 200px;
+  }
+  .login-sec-left-con {
+    padding: 20px 0px;
+    height: auto;
+  }
+  .ft-links a {
+    font-size: 14px;
+  }
+  .login-sec-left-wrap-m {
+    padding: 0px 15px;
+    background: transparent;
+    height: auto;
+  }
+  .login-sec-right-con {
+    padding: 15px 0px 0px;
+    height: auto;
+  }
+  .login-cform-main {
+    height: auto;
+    background: #fff;
+    padding: 40px 20px 20px;
+    border-radius: 20px;
+  }
+  .login-form-btn-wrap {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .password-icon i {
+    right: 12px;
+  }
+  .form-mobile-num .country-code {
+    top: 13px;
+  }
+  .login-sec {
+    height: auto;
+    display: block;
+  }
+  .login-sec-row {
+    height: auto;
+  }
+  .login-sec-left-wrap {
+    height: auto;
+  }
+  .login-sec-right-set-wrap {
+    height: auto;
+  }
+  .setacc-form {
+    height: auto;
+  }
+  .login-sec-right-wrap-h {
+    height: auto;
+  }
+  .btn {
+    border-radius: 30px;
+    min-width: 140px;
+  }
+  .setacc-form-la label.form-label {
+    font-size: 14px;
+  }
+
+  /*== Dashboard ==*/
+
+  .job-card-txt-p br {
+    display: none;
+  }
+
+  .notification-tl {
+    font-size: 14px;
+  }
+  .notification-main {
+    min-width: 350px;
+  }
+
+  /* radio start */
+
+  .radio-square-wrap .radio-st-sq + label {
+    padding: 14px 10px;
+  }
+
+  /* radio end */
+
+  /*=== Post New Job ====*/
+
+  .new-post-jwrap {
+    height: auto;
+  }
+  .job-card-content .stacat-wrap {
+    top: -15px;
+    right: -15px;
+    text-align: right;
+    position: relative;
+  }
+  .job-card-content .stacat-wrap .stacat {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+  }
+
+  /*==== team management empty ===*/
+
+  .new-team-manwrap {
+    height: calc(100vh - (82px + 20px));
+    height: auto;
+  }
+
+  /*=== profile setting ===*/
+
+  .profile-sets .nav-item {
+    margin-bottom: 10px;
+  }
+
+  .team-member-de-act-wrp {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .team-member-de-act-cl-right {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .team-member-de-act-wrp.active .team-member-de-act-cl-right {
+    transform: translate(0%);
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+  .team-member-de-act-wrp .jobd-left {
+    transform: translateX(0%);
+    transition: transform 0.3s ease-in-out;
+  }
+  .team-member-de-act-wrp.active .jobd-left {
+    transform: translateX(100%);
+    width: 0px;
+    height: 0px;
+  }
+  .team-member-de-act-wrp.active .jobd-left .new-post-jwrap {
+    border: 0px;
+  }
+  .team-member-de-act-cl-right-wrap {
+    padding: 10px;
+  }
+}
+
+/*=========================================================
+// Small devices (landscape phones, less than 768px)
+===========================================================*/
+
+@media (max-width: 767.98px) {
+  h1,
+  .h1 {
+    font-size: 24px;
+  }
+  h2,
+  .h2 {
+    font-size: 20px;
+  }
+  h3,
+  .h3 {
+    font-size: 18px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .form-control.border {
+    height: 42px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .form-control.border::placeholder {
+    font-size: 12px;
+  }
+  .form-control.border::-moz-placeholder {
+    font-size: 12px;
+  }
+  .form-control.border:-ms-input-placeholder {
+    font-size: 12px;
+  }
+  .form-control.border::-webkit-input-placeholder {
+    font-size: 12px;
+  }
+  .form-control.border::-o-input-placeholder {
+    font-size: 12px;
+  }
+
+  .btn {
+    min-width: 110px;
+  }
+
+  /*=== Login ===*/
+
+  .login-sec-logo img {
+    max-width: 170px;
+  }
+  .login-sec-cu-btn.btn {
+    text-indent: -99999px;
+    padding: 8px;
+  }
+  .login-sec-cu-icon {
+    margin: 0;
+  }
+  .bck-btn.btn-outline {
+    text-indent: -99999px;
+    min-width: auto;
+    padding: 7px;
+  }
+  .btn-outline-arr-icon {
+    margin-right: 2px;
+  }
+  .ft-links-main-mob li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  /*======bootstrap datetimepicker=======*/
+
+  .bootstrap-datetimepicker-widget .datepicker table thead tr:first-child {
+    margin-bottom: 10px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-days
+    table
+    thead
+    tr:nth-child(2) {
+    margin-bottom: 10px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-days
+    table
+    tbody
+    tr
+    td.day,
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-days
+    table
+    thead
+    tr:nth-child(2)
+    th {
+    height: 28px;
+    line-height: 28px;
+    width: 28px;
+  }
+  .bootstrap-datetimepicker-widget .datepicker table thead tr th,
+  .bootstrap-datetimepicker-widget .datepicker table tbody tr td {
+    font-size: 13px !important;
+  }
+  .bootstrap-datetimepicker-widget .datepicker table th.prev::after,
+  .bootstrap-datetimepicker-widget .datepicker table th.next::after {
+    width: 28px;
+    height: 28px;
+  }
+  .bootstrap-datetimepicker-widget table thead tr:first-child th {
+    width: 28px;
+    height: 28px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-months
+    table
+    tbody
+    tr
+    td
+    .month {
+    font-size: 14px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-years
+    table
+    tbody
+    tr
+    td
+    .year {
+    font-size: 14px;
+  }
+
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    table
+    tr
+    td
+    a.btn
+    span {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    table
+    tr
+    td
+    a.btn {
+    font-size: 16px;
+  }
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    .timepicker-hour,
+  .bdatetime .timepicker .timepicker-picker .timepicker-minute,
+  .bdatetime .timepicker .timepicker-picker table tr td button.btn {
+    font-size: 14px;
+    width: 32px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    table
+    tr
+    td {
+    height: 28px;
+    line-height: 28px;
+    width: 28px;
+  }
+  .bdatetime .bootstrap-datetimepicker-widget .timepicker-minutes table tr td {
+    font-size: 14px;
+  }
+
+  /*== Dashboard ==*/
+
+  .job-card-txt-wrap {
+    height: 240px;
+  }
+  .search-set {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* offcanvas start */
+
+  .offcanvas-cm {
+    max-width: 550px !important;
+  }
+
+  /* offcanvas end */
+
+  .offcanvas-op-btn {
+    padding: 10px 15px;
+  }
+  .offcanvas-btn-wrap .btn {
+    margin: 5px;
+  }
+
+  .loc-de-stet-col {
+    width: 100%;
+    max-width: 100%;
+  }
+  .loc-de-hr-col {
+    width: 100%;
+    max-width: 100%;
+    margin: 15px 0px;
+  }
+  .loc-de-tadd {
+    white-space: normal;
+  }
+  .post-njobby-txt {
+    padding-right: 0;
+  }
+
+  .stacat {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+  }
+  .stacat-wrap {
+    text-align: right;
+    position: relative;
+    top: -10px;
+    right: -10px;
+  }
+  .job-details-jr {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .job-details-tl-jr {
+    padding-bottom: 15px;
+  }
+
+  /*==== team management empty ===*/
+  .new-team-manwrap .postnjob-tabbing-wrap {
+    height: calc(100% - 142px);
+  }
+  .tm-card-act-content .stacat-wrap {
+    top: -15px;
+    right: -15px;
+  }
+
+  .apple-toggle-wrap label {
+    width: 45px;
+    height: 24px;
+  }
+  .apple-toggle-wrap label::after {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/*=========================================================
+Extra small devices (portrait phones, less than 576px)
+===========================================================*/
+
+@media (max-width: 575.98px) {
+  h1,
+  .h1 {
+    font-size: 22px;
+  }
+  h2,
+  .h2 {
+    font-size: 20px;
+  }
+  h3,
+  .h3 {
+    font-size: 18px;
+  }
+  h4,
+  .h4 {
+    font-size: 16px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .btn {
+    min-width: 105px;
+  }
+  .offcanvas-btn-wrap .btn {
+    margin: 2px;
+  }
+
+  /*== Dashboard ==*/
+
+  .notification-main {
+    min-width: 280px;
+  }
+
+  /* offcanvas start */
+
+  .offcanvas-cm {
+    max-width: 450px !important;
+  }
+
+  /* offcanvas end */
+
+  /*==== Dashboard with upcoming and all job ======*/
+
+  .box-count-br {
+    border-right: 0px;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .box-count-br:last-child {
+    border-bottom: 0;
+  }
+  .box-count-br-2col-wrap .box-count-br {
+    border-bottom: 0px;
+    border-right: 1px solid #e4e4e4;
+  }
+  .box-count-br-2col-wrap .box-count-br:last-child {
+    border-right: 0px;
+  }
+}
+
+@media (max-width: 399px) {
+  /*=== Login ===*/
+
+  /*====bootstrap datetimepicker====*/
+
+  .datepicker {
+    padding: 10px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-days
+    table
+    tbody
+    tr
+    td.day,
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-days
+    table
+    thead
+    tr:nth-child(2)
+    th {
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+  }
+  .bootstrap-datetimepicker-widget .datepicker table thead tr th,
+  .bootstrap-datetimepicker-widget .datepicker table tbody tr td {
+    font-size: 12px !important;
+  }
+  .bootstrap-datetimepicker-widget .datepicker .picker-switch {
+    padding: 5px;
+  }
+  .bootstrap-datetimepicker-widget .datepicker table th.prev::after,
+  .bootstrap-datetimepicker-widget .datepicker table th.next::after {
+    width: 26px;
+    height: 26px;
+  }
+  .bootstrap-datetimepicker-widget table thead tr:first-child th {
+    width: 26px;
+    height: 26px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-months
+    table
+    tbody
+    tr
+    td
+    .month {
+    font-size: 13px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-years
+    table
+    tbody
+    tr
+    td
+    .year {
+    font-size: 13px;
+  }
+  .bootstrap-datetimepicker-widget.dropdown-menu {
+    width: 275px;
+  }
+  .bootstrap-datetimepicker-widget
+    .datepicker
+    .datepicker-decades
+    table
+    tbody
+    tr
+    td
+    .decade {
+    font-size: 13px;
+  }
+
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    .timepicker-hour,
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    .timepicker-minute,
+  .bdatetime
+    .bootstrap-datetimepicker-widget
+    .timepicker
+    .timepicker-picker
+    table
+    tr
+    td
+    button.btn {
+    font-size: 13px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .bdatetime .bootstrap-datetimepicker-widget .timepicker-minutes table tr td {
+    font-size: 13px;
+  }
+
+  .btn.btn-outline-bs {
+    text-align: left;
+  }
+}
+
+@media (min-width: 1200px) and (max-height: 700px) {
+  /*=== Login =====*/
+
+  .login-sec-cu-btn-wrap {
+    padding-bottom: 60px;
+  }
+  .login-sec-cu-icon {
+    width: 23px;
+    height: 23px;
+    margin-top: -2px;
+  }
+  .login-sec-logo img {
+    max-width: 341px;
+  }
+  .login-cform-main {
+    height: calc(100% - 103px);
+  }
+  .login-cform-main h1 {
+    font-size: 26px;
+  }
+  .login-cform-main p {
+    font-size: 14px;
+  }
+  .login-form {
+    padding-top: 30px;
+  }
+  label.form-label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .login-form-forpass-link {
+    font-size: 14px;
+  }
+  .login-form-btn-wrap {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+  .btn {
+    font-size: 14px;
+    padding: 11px 14px 9px 14px;
+    min-width: 160px;
+  }
+  .login-sec-cu-btn.btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    min-width: auto;
+  }
+  .ft-links a {
+    font-size: 14px;
+  }
+  .ft-links-main {
+    bottom: 55px;
+  }
+  .btn-outline-arr-icon {
+    width: 20px;
+    height: 20px;
+    margin-top: -1px;
+  }
+  .profile-preview {
+    width: 110px;
+    height: 110px;
+  }
+  .profile-preview .imageUpload-review {
+    width: 110px;
+    height: 110px;
+  }
+  .setup-acc-logo-wrap .profile-edit {
+    padding-top: 12px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /*== Post New Job ==*/
+  .jobd-left {
+    width: 39%;
+  }
+  .jobd-right {
+    width: 61%;
+  }
+
+  /*== Dashboard with upcoming and all job ====*/
+  .schedule-days-col {
+    width: 33.333%;
+  }
+}
+
+@media (min-width: 1366px) {
+  /*== Dashboard with upcoming and all job ====*/
+
+  .schedule-days-col {
+    width: 20%;
+  }
+  .schedule-days-box {
+    padding: 7px 4px !important;
+  }
+  .wh-44 {
+    width: 35px;
+    height: 35px;
+  }
+  .wh-44-txt {
+    width: calc(100% - 35px);
+    padding-left: 5px !important;
+  }
+  .schedule-days-cal-icon img {
+    width: 14px;
+    height: 14px;
+  }
+  .schedule-days-tl {
+    font-size: 13px !important;
+  }
+  .schedule-days-dt {
+    font-size: 13px !important;
+  }
+
+  .dash-to-col-left {
+    width: 70%;
+  }
+  .dash-to-col-right {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1400px) {
+  /*== Dashboard with upcoming and all job ====*/
+
+  .td-details-box-main .td-details-box-wp .td-details-tdt.fs-14 {
+    font-size: 13px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-cat {
+    font-size: 11px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-num {
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  /*== Dashboard with upcoming and all job ====*/
+
+  .schedule-days-tl {
+    font-size: 14px !important;
+  }
+  .schedule-days-dt {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 1800px) {
+  /*== Dashboard with upcoming and all job ====*/
+
+  .schedule-days-tl {
+    font-size: 15px !important;
+  }
+
+  .td-details-box-main .td-details-box-wp .td-details-tdt.fs-14 {
+    font-size: 13px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-cat {
+    font-size: 11px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-num {
+    font-size: 11px !important;
+  }
+  .schedule-days-box {
+    padding: 6px !important;
+  }
+  .wh-44-txt {
+    padding-left: 7px !important;
+    width: calc(100% - 44px);
+  }
+  .wh-44 {
+    width: 44px;
+    height: 44px;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-tdt.fs-14 {
+    font-size: 14px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-cat {
+    font-size: 12px !important;
+  }
+  .td-details-box-main .td-details-box-wp .td-details-num {
+    font-size: 12px !important;
+  }
+
+  .dash-to-col-left {
+    width: 72%;
+  }
+  .dash-to-col-right {
+    width: 28%;
+  }
+}
+
+@media (min-width: 1900px) {
+  /*== Dashboard with upcoming and all job ====*/
+
+  .schedule-days-tl {
+    font-size: 16px !important;
+  }
+  .schedule-days-dt {
+    font-size: 14px !important;
+  }
+}

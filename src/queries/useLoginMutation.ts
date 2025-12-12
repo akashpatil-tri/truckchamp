@@ -10,12 +10,16 @@ export function useLoginMutation() {
     mutationFn: (data: LoginFormData) => authService.login(data),
     onError: (err) => {
       // Optional: centralized error handling (toast, analytics)
+      localStorage.removeItem("authToken");
       console.error("Login mutation error:", err);
     },
-    onSuccess: (data) => {
+    onSuccess: (response) => {
       // Optional: set client-side auth state, redirect, etc.
       // e.g., queryClient.setQueryData(['me'], data.user)
-      console.log("Logged in:", data);
+      if (response.token) {
+        localStorage.setItem("authToken", response.token);
+      }
+      console.log("Logged in:", response);
     },
   });
 }

@@ -21,6 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
       "@api/*": ["src/lib/api/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
@@ -36,7 +37,8 @@
       "@redux/*": ["src/redux/*"],
       "@routes/*": ["src/routes/*"],
       "@stories/*": ["src/stories/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@fonts/*": ["src/fonts/*"]
     }
   },
   "include": [
