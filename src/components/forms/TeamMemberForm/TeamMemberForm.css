@@ -1,0 +1,9 @@
+/* Auto-generate button */
+.auto-generate-btn {
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d74315;
+  font-weight: 600;
+  font-size: 14px;
+}

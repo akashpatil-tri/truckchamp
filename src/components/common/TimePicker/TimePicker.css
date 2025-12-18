@@ -1,0 +1,146 @@
+/* Custom TimePicker styles */
+
+.timepicker-custom {
+  width: 100%;
+}
+
+.timepicker-custom input.form-control {
+  border: 2px solid #dc3545;
+  border-radius: 8px;
+  padding: 12px 45px 12px 15px;
+  font-size: 14px;
+  color: #000;
+  background-color: white;
+  cursor: pointer;
+}
+
+.timepicker-custom input.form-control:focus {
+  outline: none;
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+}
+
+.timepicker-custom input.form-control::placeholder {
+  color: #999;
+}
+
+.timepicker-custom input.form-control:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.timepicker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.timepicker-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.timepicker-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 8px; */
+}
+
+.timepicker-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  color: #333;
+  font-size: 15px;
+}
+
+.timepicker-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.timepicker-btn:active {
+  background-color: #e0e0e0;
+}
+
+.timepicker-value {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000;
+  min-width: 60px;
+  text-align: center;
+  padding: 10px;
+  line-height: 1;
+}
+
+.timepicker-separator {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  padding: 0 8px;
+  align-self: center;
+  /* margin-top: 48px; */
+}
+
+.timepicker-period {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #666;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  /* margin-left: 12px; */
+  align-self: center;
+  /* margin-top: 48px; */
+}
+
+.timepicker-period:hover {
+  background-color: #e0e0e0;
+}
+
+.timepicker-period.active {
+  background-color: #dc3545;
+  color: white;
+}
+
+.timepicker-period:active {
+  transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .timepicker-value {
+    font-size: 28px;
+    min-width: 50px;
+  }
+
+  .timepicker-separator {
+    font-size: 28px;
+  }
+
+  .timepicker-period {
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+  }
+}

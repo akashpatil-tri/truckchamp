@@ -1,0 +1,46 @@
+/* Bootstrap Offcanvas Override - Match exact Bootstrap behavior */
+.offcanvas.offcanvas-end {
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out, visibility 0.3s ease-in-out;
+  visibility: hidden;
+}
+
+.offcanvas.offcanvas-end.showing {
+  transform: translateX(100%);
+  visibility: visible;
+}
+
+.offcanvas.offcanvas-end.show {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.offcanvas.offcanvas-end.hiding {
+  transform: translateX(100%);
+  visibility: visible;
+}
+
+/* Backdrop - Subtle overlay that keeps background visible */
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.offcanvas-backdrop.fade {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
+.offcanvas-backdrop.fade.show {
+  opacity: 1;
+}
+
+/* Ensure offcanvas is above backdrop */
+.offcanvas {
+  z-index: 1050;
+}

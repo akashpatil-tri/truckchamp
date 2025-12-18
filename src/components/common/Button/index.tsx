@@ -1,139 +1,190 @@
-// components/common/Button.tsx
+// components/common/Button/index.tsx
 import React, { type ReactNode } from "react";
 
 import clsx from "clsx";
+import Link from "next/link";
 
-export interface ButtonProps {
-  isLink?: boolean;
-  href?:
-    | string
-    | {
-        pathname: string;
-        query: object;
-      };
+export type ButtonVariant = "filled" | "outline" | "none" | "ghost" | "link";
+export type ButtonSize = "sm" | "md" | "lg";
+
+export interface BaseButtonProps {
   className?: string;
+  style?: React.CSSProperties;
   title?: string;
   icon?: ReactNode;
-  isIconFirst?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  isActive?: boolean;
-  titleClassName?: string;
-  type?: "submit" | "reset" | "button";
-  variant?: "filled" | "outline" | "none";
+  iconPosition?: "left" | "right";
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   isDisabled?: boolean;
   isLoading?: boolean;
   children?: ReactNode;
-  buttonRef?: React.LegacyRef<HTMLButtonElement>;
   id?: string;
-  parentClassName?: string;
-  style?: React.CSSProperties;
+  fullWidth?: boolean;
+  ariaLabel?: string;
 }
 
+export interface ButtonAsButton extends BaseButtonProps {
+  as?: "button";
+  type?: "submit" | "reset" | "button";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  href?: never;
+  target?: never;
+  rel?: never;
+  [key: string]: any;
+}
+
+export interface ButtonAsLink extends BaseButtonProps {
+  as: "link";
+  href: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
+  type?: never;
+  onClick?: never;
+}
+
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
+
 /**
- * Plain, tailwind-free Button component.
- * - 'variant' controls visual style.
- * - 'className' allows custom CSS to override the default look.
+ * Reusable Button component that can render as a button or Next.js Link
+ *
+ * @example
+ * // As a button
+ * <Button variant="filled" onClick={handleClick}>Click me</Button>
+ *
+ * @example
+ * // As a link
+ * <Button as="link" href="/dashboard" variant="outline">Go to Dashboard</Button>
+ *
+ * @example
+ * // With icon
+ * <Button icon={<Icon name="plus" />} iconPosition="left">Add Item</Button>
+ *
+ * @example
+ * // Loading state
+ * <Button isLoading={isPending} type="submit">Submit</Button>
  */
-export const Button = ({
-  isLink = false,
-  href,
-  className = "",
-  title,
-  icon = false,
-  isIconFirst = false,
-  variant = "filled",
-  onClick,
-  isActive = false,
-  titleClassName,
-  type = "button",
-  isDisabled,
-  isLoading = false,
-  children,
-  buttonRef,
-  id,
-  parentClassName,
-  style,
-}: ButtonProps) => {
-  // if you want to render a link, handle it here (we keep it simple)
-  if (isLink && href) {
-    // Returning null to avoid changing behaviour — replace with <Link> if needed.
-    return null;
-  }
-
-  const classes = clsx(
-    "btn",
+export const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
+  (
     {
-      "btn--filled": variant === "filled",
-      "btn--outline": variant === "outline",
-      "btn--none": variant === "none",
-      "is-loading": isLoading,
-      "is-disabled": isDisabled || isLoading,
+      as = "button",
+      className = "",
+      title,
+      icon,
+      iconPosition = "right",
+      variant = "filled",
+      size = "md",
+      isDisabled = false,
+      isLoading = false,
+      children,
+      id,
+      fullWidth = false,
+      ariaLabel,
+      ...props
     },
-    className
-  );
+    ref
+  ) => {
+    const content = title || children;
 
-  return (
-    <div
-      className={clsx("btn-wrapper", parentClassName)}
-      style={{ position: "relative" }}
-    >
-      <button
-        id={id}
-        ref={buttonRef}
-        type={type}
-        onClick={onClick}
-        className={classes}
-        style={style}
-        disabled={isDisabled || isLoading}
-        aria-disabled={isDisabled || isLoading}
-      >
-        {/* icon first */}
-        {isIconFirst && icon && (
-          <span className="btn__icon btn__icon--first">{icon}</span>
+    // Build CSS classes
+    const buttonClasses = clsx(
+      "btn",
+      {
+        // Variants
+        "btn--filled": variant === "filled",
+        "btn--outline": variant === "outline",
+        "btn--ghost": variant === "ghost",
+        "btn--link": variant === "link",
+        "btn--none": variant === "none",
+
+        // Sizes
+        "btn--sm": size === "sm",
+        "btn--md": size === "md",
+        "btn--lg": size === "lg",
+
+        // States
+        "btn--loading": isLoading,
+        "btn--disabled": isDisabled || isLoading,
+        "btn--full-width": fullWidth,
+
+        // Icon positioning
+        "btn--icon-left": icon && iconPosition === "left",
+        "btn--icon-right": icon && iconPosition === "right",
+      },
+      className
+    );
+
+    // Render button content
+    const renderContent = () => (
+      <>
+        {icon && iconPosition === "left" && (
+          <span className="btn__icon btn__icon--left">{icon}</span>
         )}
 
-        {/* title if provided */}
-        {title ? (
-          <span className={clsx("btn__title", titleClassName)}>{title}</span>
-        ) : null}
+        {content && <span className="btn__content">{content}</span>}
 
-        {/* children fallback */}
-        {!title && children}
+        {icon && iconPosition === "right" && (
+          <span className="btn__icon btn__icon--right">{icon}</span>
+        )}
 
-        {/* icon last */}
-        {!isIconFirst && icon && <span className="btn__icon">{icon}</span>}
-      </button>
+        {isLoading && (
+          <span className="btn__spinner" aria-hidden="true">
+            <span className="btn__spinner-dot" />
+          </span>
+        )}
+      </>
+    );
 
-      {/* loading spinner / overlay */}
-      {(isDisabled || isLoading) && (
-        <div
-          className="btn-overlay"
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: 8,
-            pointerEvents: "none",
-          }}
-        />
-      )}
+    // Render as Next.js Link
+    if (as === "link") {
+      const { href, target, rel } = props as ButtonAsLink;
+      const linkRel = target === "_blank" ? "noopener noreferrer" : rel;
 
-      {isLoading && (
-        <div
-          className="btn-spinner"
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            right: 12,
-            top: "50%",
-            transform: "translateY(-50%)",
+      return (
+        <Link
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          href={href}
+          id={id}
+          className={buttonClasses}
+          target={target}
+          rel={linkRel}
+          aria-label={ariaLabel}
+          aria-disabled={isDisabled || isLoading}
+          onClick={(e) => {
+            if (isDisabled || isLoading) {
+              e.preventDefault();
+            }
           }}
         >
-          <span className="btn-spinner-dot" />
-        </div>
-      )}
-    </div>
-  );
-};
+          {renderContent()}
+        </Link>
+      );
+    }
+
+    // Render as button
+    const { type = "button", onClick, ...restProps } = props as ButtonAsButton;
+
+    return (
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        id={id}
+        type={type}
+        onClick={onClick}
+        className={buttonClasses}
+        disabled={isDisabled || isLoading}
+        aria-label={ariaLabel}
+        aria-disabled={isDisabled || isLoading}
+        aria-busy={isLoading}
+        {...restProps}
+      >
+        {renderContent()}
+      </button>
+    );
+  }
+);
+
+Button.displayName = "Button";
 
 export default Button;

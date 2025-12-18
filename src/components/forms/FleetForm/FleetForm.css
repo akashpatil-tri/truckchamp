@@ -1,0 +1,55 @@
+/* Fleet Image Upload */
+.fleet-image-thumbnail {
+  height: 100px;
+  object-fit: cover;
+}
+
+.fleet-image-slot {
+  height: 100px;
+  cursor: pointer;
+  background-color: #f6f6f4;
+}
+
+.fleet-image-remove-btn {
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d74315;
+}
+
+.fleet-upload-icon {
+  font-size: 32px;
+  color: #d74315;
+}
+
+/* Document Upload Buttons */
+.doc-upload-btn {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.doc-upload-btn--uploaded-green {
+  color: #2e7d32;
+}
+
+.doc-upload-btn--uploaded-orange {
+  color: #ffa500;
+}
+
+.doc-upload-btn--default {
+  color: #797979;
+}
+
+.doc-checkmark-green {
+  color: #2e7d32;
+}
+
+.doc-checkmark-orange {
+  color: #ffa500;
+}

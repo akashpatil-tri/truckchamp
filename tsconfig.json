@@ -26,9 +26,10 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@common/*": ["src/components/common/*"],
-      "@constants/*": ["src/constants/*"],
-      "@enums/*": ["src/enums/*"],
-      "@features/*": ["src/features/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@layout/*": ["src/components/layout/*"],
+      "@forms/*": ["src/components/forms/*"],
+      "@constants": ["src/lib/constants"],
       "@providers/*": ["src/providers/*"],
       "@lib/*": ["src/lib/*"],
       "@helpers/*": ["src/helpers/*"],
@@ -38,7 +39,10 @@
       "@routes/*": ["src/routes/*"],
       "@stories/*": ["src/stories/*"],
       "@styles/*": ["src/styles/*"],
-      "@fonts/*": ["src/fonts/*"]
+      "@fonts/*": ["src/fonts/*"],
+      "@queries/*": ["src/queries/*"],
+      "@store/*": ["src/store/*"],
+      "@types/*": ["src/types/*"]
     }
   },
   "include": [

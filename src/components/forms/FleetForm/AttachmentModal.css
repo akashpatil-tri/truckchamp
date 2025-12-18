@@ -1,0 +1,35 @@
+/* Modal Backdrop - higher z-index to appear above offcanvas */
+.attachment-modal-backdrop {
+  z-index: 1055;
+}
+
+/* Modal Content - highest z-index */
+.attachment-modal {
+  z-index: 1056;
+}
+
+/* Modal Dialog */
+.attachment-modal-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Modal Title */
+.attachment-modal-title {
+  color: #000;
+  font-size: 20px;
+}
+
+/* Modal Description */
+.attachment-modal-description {
+  color: #797979;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 575.98px) {
+  .attachment-modal-content {
+    max-width: 100%;
+    margin: 0 15px;
+  }
+}

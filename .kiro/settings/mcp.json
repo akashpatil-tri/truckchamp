@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "power-figma-figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@kiroai/figma-mcp-server@latest"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

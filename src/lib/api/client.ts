@@ -1,5 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
+import { AUTH_TOKEN_KEY } from "@lib/constants";
+
 // API Response wrapper
 export interface ApiResponse<T = unknown> {
   data: T;
@@ -29,7 +31,7 @@ apiClient.interceptors.request.use(
   (config) => {
     // Add auth token if available
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("authToken");
+      const token = localStorage.getItem(AUTH_TOKEN_KEY);
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -58,7 +60,7 @@ apiClient.interceptors.response.use(
     if (error.response?.status === 401) {
       // Redirect to login or refresh token
       if (typeof window !== "undefined") {
-        localStorage.removeItem("token");
+        localStorage.removeItem(AUTH_TOKEN_KEY);
         window.location.href = "/login";
       }
     }
