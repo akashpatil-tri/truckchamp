@@ -16,7 +16,7 @@ export const authService = {
         data
       );
 
-      if (!response.data.success) {
+      if (response.data.status !== 1) {
         throw new Error(response.data.message || "Login failed");
       }
 
@@ -39,7 +39,7 @@ export const authService = {
     try {
       const response = await apiClient.post("/auth/forgot-password", { email });
 
-      if (!response.data.success) {
+      if (response.data.status !== 1) {
         throw new Error(response.data.message || "Login failed");
       }
 
@@ -65,14 +65,16 @@ export const authService = {
         confirmPassword,
       });
 
-      if (!response.data.success) {
-        throw new Error(response.data.message || "Login failed");
+      if (response.data.status !== 1) {
+        throw new Error(response.data.message || "Password reset failed");
       }
 
       return response.data.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        throw new Error(error.response?.data?.message || "Login failed");
+        throw new Error(
+          error.response?.data?.message || "Password reset failed"
+        );
       }
       throw error;
     }
@@ -86,7 +88,7 @@ export const authService = {
         { token }
       );
 
-      if (!response.data.success) {
+      if (response.data.status !== 1) {
         throw new Error(response.data.message || "Token validation failed");
       }
 

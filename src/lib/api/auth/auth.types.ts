@@ -1,7 +1,4 @@
-export type UserRole = 
-  | 'construction_admin' 
-  | 'operator_admin' 
-  | 'super_admin';
+export type UserRole = "construction_admin" | "operator_admin" | "super_admin";
 
 export interface LoginRequest {
   email: string;
@@ -16,6 +13,7 @@ export interface LoginResponse {
     slug: string;
   };
   token: string;
+  fullName: string;
 }
 
 export interface User {
@@ -23,5 +21,4 @@ export interface User {
   email: string;
   name: string;
   role: UserRole;
-  
 }

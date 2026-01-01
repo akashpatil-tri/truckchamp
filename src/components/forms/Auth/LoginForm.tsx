@@ -36,14 +36,18 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginFormData) => {
     try {
       const response = await mutation.mutateAsync(data);
+
       // Set user data from login response - no need to call /me again
       login({
-        id: response.id,
-        email: response.email,
-        name: response.email, // Use email as name fallback
-        role: response.role.slug as UserRole,
+        id: response?.id,
+        email: response?.email,
+        name: response?.fullName, // Use email as name fallback
+        role: response?.role?.slug as UserRole,
       });
-      const dashboardRoute = getRoleBasedDashboard(response.role.slug as UserRole);
+      const dashboardRoute = getRoleBasedDashboard(
+        response?.role?.slug as UserRole
+      );
+
       router.push(dashboardRoute);
     } catch (err: unknown) {
       console.error("Login failed:", err);
@@ -71,8 +75,9 @@ export default function LoginForm() {
               type="email"
               placeholder="Enter your email address"
               {...register("email")}
-              inputClass={`form-control border ${errors.email ? "input-error" : ""
-                }`}
+              inputClass={`form-control border ${
+                errors.email ? "input-error" : ""
+              }`}
               aria-invalid={errors.email ? "true" : "false"}
               aria-describedby={errors.email ? "email-error" : undefined}
             />

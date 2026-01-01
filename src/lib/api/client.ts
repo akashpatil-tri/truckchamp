@@ -5,6 +5,7 @@ export interface ApiResponse<T = unknown> {
   data: T;
   message?: string;
   success: boolean;
+  status: number;
 }
 
 // API Error type
