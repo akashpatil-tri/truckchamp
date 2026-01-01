@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
+import Image from "next/image";
+
+import backIcon from "@assets/svg/svgviewer-png-output.png";
 import Button from "@common/Button";
 import JobSpecifications, {
   SelectJobSpecificationRef,
@@ -18,6 +21,7 @@ import { useJobFormStore } from "@store/useJobFormStore";
 import { useOffcanvasStore } from "@store/useOffcanvasStore";
 
 import { useCreateJobMutation } from "@/queries/job";
+import { useTruckTypesQuery } from "@/queries/truck";
 
 const OFFCANVAS_IDS = [
   "offcanvasStep1",
@@ -31,6 +35,14 @@ export default function JobForm() {
   const { formData, nextStep, prevStep, resetForm } = useJobFormStore();
   const { openOffcanvas, closeOffcanvas, openOffcanvasId } =
     useOffcanvasStore();
+
+  const {
+    data: truckTypes,
+    isPending,
+    isError,
+    error,
+  } = useTruckTypesQuery(openOffcanvasId === "offcanvasStep1");
+
   const createJobMutation = useCreateJobMutation();
 
   const selectEquipmentRef = useRef<SelectEquipmentRef>(null);
@@ -77,6 +89,7 @@ export default function JobForm() {
       // Validate schedule job
       isValid = (await scheduleJobRef.current?.validateForm()) ?? false;
     }
+    console.log("isValid", isValid);
 
     if (!isValid) {
       // Validation failed - errors are already shown in the form
@@ -113,6 +126,7 @@ export default function JobForm() {
     try {
       await createJobMutation.mutateAsync({
         equipmentType: formData.equipmentType,
+        jobSpecifications: formData.jobSpecifications,
         lineLength: formData.lineLength,
         volume: formData.volume!,
         aggregateTypes: formData.aggregateTypes,
@@ -171,7 +185,13 @@ export default function JobForm() {
         <form className="offcanvas-form">
           <div className="offcanvas-body">
             <div className="offcanvas-form-main">
-              <SelectEquipment ref={selectEquipmentRef} />
+              <SelectEquipment
+                data={truckTypes}
+                ref={selectEquipmentRef}
+                isPending={isPending}
+                isError={isError}
+                error={error}
+              />
             </div>
           </div>
           <div className="offcanvas-op-btn">
@@ -214,41 +234,29 @@ export default function JobForm() {
         <form className="offcanvas-form">
           <div className="offcanvas-body">
             <div className="offcanvas-form-main">
-              <JobSpecifications ref={selectJobSpecificationRef} />
+              <JobSpecifications
+                ref={selectJobSpecificationRef}
+                data={truckTypes}
+                enabled={openOffcanvasId === "offcanvasStep2"}
+              />
             </div>
           </div>
           <div className="offcanvas-op-btn">
             <div className="offcanvas-btn-wrap">
-              <button
-                type="button"
-                onClick={() => handleBack(1)}
+              <Button
                 className="offcanvas-btn-back btn btn-outline"
-                data-offcanvas-prev="#offcanvasSelectFleet"
-              >
-                <span className="btn-outline-arr-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {" "}
-                    <path
-                      d="M19 11.0001H9L12.29 7.71006C12.3837 7.6171 12.4581 7.5065 12.5089 7.38464C12.5597 7.26278 12.5858 7.13207 12.5858 7.00006C12.5858 6.86805 12.5597 6.73734 12.5089 6.61548C12.4581 6.49362 12.3837 6.38302 12.29 6.29006C12.1026 6.10381 11.8492 5.99927 11.585 5.99927C11.3208 5.99927 11.0674 6.10381 10.88 6.29006L6.59 10.5901C6.21441 10.9634 6.00223 11.4705 6 12.0001C6.00487 12.5262 6.21684 13.0292 6.59 13.4001L10.88 17.7001C10.9732 17.7926 11.0838 17.866 11.2054 17.9158C11.3269 17.9657 11.4571 17.9911 11.5885 17.9906C11.7199 17.9902 11.8499 17.9638 11.9712 17.9131C12.0924 17.8624 12.2024 17.7883 12.295 17.6951C12.3876 17.6018 12.4609 17.4913 12.5107 17.3697C12.5606 17.2481 12.586 17.1179 12.5856 16.9865C12.5851 16.8551 12.5588 16.7251 12.508 16.6039C12.4573 16.4827 12.3832 16.3726 12.29 16.2801L9 13.0001H19C19.2652 13.0001 19.5196 12.8947 19.7071 12.7072C19.8946 12.5196 20 12.2653 20 12.0001C20 11.7348 19.8946 11.4805 19.7071 11.293C19.5196 11.1054 19.2652 11.0001 19 11.0001Z"
-                      fill="#797979"
-                    />{" "}
-                  </svg>
-                </span>
-                Go Back
-              </button>
+                title="Go Back"
+                variant="outline"
+                iconPosition="left"
+                icon={<Image src={backIcon} alt="Back" className="me-1" />}
+                onClick={() => handleBack(1)}
+              />
               <Button
                 type="button"
                 variant="filled"
                 onClick={() => handleNext(1)}
-              >
-                Continue to Location
-              </Button>
+                title="Continue to Location"
+              />
             </div>
           </div>
         </form>
@@ -277,36 +285,20 @@ export default function JobForm() {
           </div>
           <div className="offcanvas-op-btn">
             <div className="offcanvas-btn-wrap">
-              <button
-                type="button"
+              <Button
                 className="offcanvas-btn-back btn btn-outline"
-                data-offcanvas-prev="#offcanvasSelectFleet"
+                title="Go Back"
+                variant="outline"
+                iconPosition="left"
+                icon={<Image src={backIcon} alt="Back" className="me-1" />}
                 onClick={() => handleBack(2)}
-              >
-                <span className="btn-outline-arr-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {" "}
-                    <path
-                      d="M19 11.0001H9L12.29 7.71006C12.3837 7.6171 12.4581 7.5065 12.5089 7.38464C12.5597 7.26278 12.5858 7.13207 12.5858 7.00006C12.5858 6.86805 12.5597 6.73734 12.5089 6.61548C12.4581 6.49362 12.3837 6.38302 12.29 6.29006C12.1026 6.10381 11.8492 5.99927 11.585 5.99927C11.3208 5.99927 11.0674 6.10381 10.88 6.29006L6.59 10.5901C6.21441 10.9634 6.00223 11.4705 6 12.0001C6.00487 12.5262 6.21684 13.0292 6.59 13.4001L10.88 17.7001C10.9732 17.7926 11.0838 17.866 11.2054 17.9158C11.3269 17.9657 11.4571 17.9911 11.5885 17.9906C11.7199 17.9902 11.8499 17.9638 11.9712 17.9131C12.0924 17.8624 12.2024 17.7883 12.295 17.6951C12.3876 17.6018 12.4609 17.4913 12.5107 17.3697C12.5606 17.2481 12.586 17.1179 12.5856 16.9865C12.5851 16.8551 12.5588 16.7251 12.508 16.6039C12.4573 16.4827 12.3832 16.3726 12.29 16.2801L9 13.0001H19C19.2652 13.0001 19.5196 12.8947 19.7071 12.7072C19.8946 12.5196 20 12.2653 20 12.0001C20 11.7348 19.8946 11.4805 19.7071 11.293C19.5196 11.1054 19.2652 11.0001 19 11.0001Z"
-                      fill="#797979"
-                    />{" "}
-                  </svg>
-                </span>
-                Go Back
-              </button>
+              />
               <Button
                 type="button"
                 variant="filled"
                 onClick={() => handleNext(2)}
-              >
-                Continue to Schedule
-              </Button>
+                title="Continue to Schedule"
+              />
             </div>
           </div>
         </form>
@@ -338,37 +330,20 @@ export default function JobForm() {
           </div>
           <div className="offcanvas-op-btn">
             <div className="offcanvas-btn-wrap">
-              <button
-                type="button"
+              <Button
                 className="offcanvas-btn-back btn btn-outline"
-                data-offcanvas-prev="#offcanvasSelectFleet"
+                title="Go Back"
+                variant="outline"
+                iconPosition="left"
+                icon={<Image src={backIcon} alt="Back" className="me-1" />}
                 onClick={() => handleBack(3)}
-              >
-                <span className="btn-outline-arr-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {" "}
-                    <path
-                      d="M19 11.0001H9L12.29 7.71006C12.3837 7.6171 12.4581 7.5065 12.5089 7.38464C12.5597 7.26278 12.5858 7.13207 12.5858 7.00006C12.5858 6.86805 12.5597 6.73734 12.5089 6.61548C12.4581 6.49362 12.3837 6.38302 12.29 6.29006C12.1026 6.10381 11.8492 5.99927 11.585 5.99927C11.3208 5.99927 11.0674 6.10381 10.88 6.29006L6.59 10.5901C6.21441 10.9634 6.00223 11.4705 6 12.0001C6.00487 12.5262 6.21684 13.0292 6.59 13.4001L10.88 17.7001C10.9732 17.7926 11.0838 17.866 11.2054 17.9158C11.3269 17.9657 11.4571 17.9911 11.5885 17.9906C11.7199 17.9902 11.8499 17.9638 11.9712 17.9131C12.0924 17.8624 12.2024 17.7883 12.295 17.6951C12.3876 17.6018 12.4609 17.4913 12.5107 17.3697C12.5606 17.2481 12.586 17.1179 12.5856 16.9865C12.5851 16.8551 12.5588 16.7251 12.508 16.6039C12.4573 16.4827 12.3832 16.3726 12.29 16.2801L9 13.0001H19C19.2652 13.0001 19.5196 12.8947 19.7071 12.7072C19.8946 12.5196 20 12.2653 20 12.0001C20 11.7348 19.8946 11.4805 19.7071 11.293C19.5196 11.1054 19.2652 11.0001 19 11.0001Z"
-                      fill="#797979"
-                    />{" "}
-                  </svg>
-                </span>
-                Go Back
-              </button>
-
+              />
               <Button
                 type="button"
                 variant="filled"
                 onClick={() => handleNext(3)}
-              >
-                Preview Job
-              </Button>
+                title="Preview Job"
+              />
             </div>
           </div>
         </form>
@@ -400,38 +375,22 @@ export default function JobForm() {
           </div>
           <div className="offcanvas-op-btn">
             <div className="offcanvas-btn-wrap">
-              <button
-                type="button"
-                onClick={() => handleBack(4)}
+              <Button
                 className="offcanvas-btn-back btn btn-outline"
-                data-offcanvas-prev="#offcanvasSelectFleet"
-              >
-                <span className="btn-outline-arr-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {" "}
-                    <path
-                      d="M19 11.0001H9L12.29 7.71006C12.3837 7.6171 12.4581 7.5065 12.5089 7.38464C12.5597 7.26278 12.5858 7.13207 12.5858 7.00006C12.5858 6.86805 12.5597 6.73734 12.5089 6.61548C12.4581 6.49362 12.3837 6.38302 12.29 6.29006C12.1026 6.10381 11.8492 5.99927 11.585 5.99927C11.3208 5.99927 11.0674 6.10381 10.88 6.29006L6.59 10.5901C6.21441 10.9634 6.00223 11.4705 6 12.0001C6.00487 12.5262 6.21684 13.0292 6.59 13.4001L10.88 17.7001C10.9732 17.7926 11.0838 17.866 11.2054 17.9158C11.3269 17.9657 11.4571 17.9911 11.5885 17.9906C11.7199 17.9902 11.8499 17.9638 11.9712 17.9131C12.0924 17.8624 12.2024 17.7883 12.295 17.6951C12.3876 17.6018 12.4609 17.4913 12.5107 17.3697C12.5606 17.2481 12.586 17.1179 12.5856 16.9865C12.5851 16.8551 12.5588 16.7251 12.508 16.6039C12.4573 16.4827 12.3832 16.3726 12.29 16.2801L9 13.0001H19C19.2652 13.0001 19.5196 12.8947 19.7071 12.7072C19.8946 12.5196 20 12.2653 20 12.0001C20 11.7348 19.8946 11.4805 19.7071 11.293C19.5196 11.1054 19.2652 11.0001 19 11.0001Z"
-                      fill="#797979"
-                    />{" "}
-                  </svg>
-                </span>
-                Go Back
-              </button>
+                title="Go Back"
+                variant="outline"
+                iconPosition="left"
+                icon={<Image src={backIcon} alt="Back" className="me-1" />}
+                onClick={() => handleBack(4)}
+              />
               <Button
                 type="button"
                 variant="filled"
                 onClick={handleSubmit}
                 isLoading={createJobMutation.isPending}
                 isDisabled={createJobMutation.isPending}
-              >
-                {createJobMutation.isPending ? "Submitting..." : "Submit"}
-              </Button>
+                title={createJobMutation.isPending ? "Submitting..." : "Submit"}
+              />
             </div>
           </div>
         </form>

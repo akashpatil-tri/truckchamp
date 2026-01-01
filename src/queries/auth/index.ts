@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 import { authService } from "@api/auth/auth.service";
-import { AUTH_TOKEN_KEY } from "@lib/constants";
 
 import type { LoginFormData } from "@/lib/schemas/auth.schema";
 
@@ -12,11 +11,8 @@ export function useLoginMutation() {
     onError: (err) => {
       toast.error(err?.message || "Login failed");
     },
-    onSuccess: (response) => {
-      if (response.token) {
-        localStorage.setItem(AUTH_TOKEN_KEY, response.token);
-      }
-    },
+    // Note: Cookie is set by backend, user data returned in response
+    // Use AuthContext's login() to store user data after successful login
   });
 }
 

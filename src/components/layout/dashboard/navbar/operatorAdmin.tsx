@@ -3,16 +3,18 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import adminImage from "@assets/images/admin-img.png";
 import headerLogo from "@assets/svg/header-logo.svg";
 import notificationIcon from "@assets/svg/notification-icon.svg";
-import { useOffcanvasStore } from "@store/useOffcanvasStore";
+import { useAuth } from "@providers/AuthProvider";
 
 import "./navbar.css";
 
 export default function OperatorNavbar() {
-  const { openOffcanvas } = useOffcanvasStore();
+  const { logout, user } = useAuth();
+
   const [notificationDropdownOpen, setNotificationDropdownOpen] =
     useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -26,9 +28,9 @@ export default function OperatorNavbar() {
     if (root) root.classList.toggle("sidebar-show-hide");
   };
 
-  const handleOpenJobForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    openOffcanvas("offcanvasStep1");
+    await logout();
   };
 
   // Close dropdown when clicking outside
@@ -211,7 +213,6 @@ export default function OperatorNavbar() {
             </div>
           </ul>
         </li>
-        
 
         <li
           className="ha-dropdown-main ad-dropdown-main nav-item dropdown"
@@ -230,8 +231,8 @@ export default function OperatorNavbar() {
             <div className="user-menu">
               <Image src={adminImage} alt="#" />
               <div className="h-admin-info">
-                <span>Build Right Pvt. Ltd.</span>
-                <span>Admin</span>
+                <span>{user?.name || "User"}</span>
+                <span>{user?.role || "Admin"}</span>
               </div>
             </div>
           </a>
@@ -241,7 +242,7 @@ export default function OperatorNavbar() {
             }`}
           >
             <li>
-              <a className="dropdown-item" href="profile-settings.html">
+              <Link className="dropdown-item" href="/truck-operator/profile">
                 <span className="icon">
                   <svg
                     width="18"
@@ -262,7 +263,7 @@ export default function OperatorNavbar() {
                   </svg>
                 </span>
                 My Profile
-              </a>
+              </Link>
             </li>
 
             <li>
@@ -295,7 +296,7 @@ export default function OperatorNavbar() {
             </li>
 
             <li>
-              <a className="dropdown-item" href="login.html">
+              <a className="dropdown-item" href="#" onClick={handleLogout}>
                 <span className="icon">
                   <svg
                     width="18"

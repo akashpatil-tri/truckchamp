@@ -1,7 +1,7 @@
 import Navbar from "@layout/dashboard/navbar/page";
 import SideBar from "@layout/dashboard/sidebar/page";
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;

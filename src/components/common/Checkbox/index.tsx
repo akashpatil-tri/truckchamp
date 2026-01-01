@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 export interface CheckboxProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
-  label?: string;
+  label?: React.ReactNode;
   error?: string;
   wrapperClassName?: string;
 }

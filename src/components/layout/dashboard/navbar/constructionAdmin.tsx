@@ -3,16 +3,19 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import adminImage from "@assets/images/admin-img.png";
 import headerLogo from "@assets/svg/header-logo.svg";
 import notificationIcon from "@assets/svg/notification-icon.svg";
+import { useAuth } from "@providers/AuthProvider";
 import { useOffcanvasStore } from "@store/useOffcanvasStore";
 
 import "./navbar.css";
 
 export default function Navbar() {
   const { openOffcanvas } = useOffcanvasStore();
+  const { logout, user } = useAuth();
   const [notificationDropdownOpen, setNotificationDropdownOpen] =
     useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -29,6 +32,11 @@ export default function Navbar() {
   const handleOpenJobForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     openOffcanvas("offcanvasStep1");
+  };
+
+  const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    await logout();
   };
 
   // Close dropdown when clicking outside
@@ -238,8 +246,8 @@ export default function Navbar() {
             <div className="user-menu">
               <Image src={adminImage} alt="#" />
               <div className="h-admin-info">
-                <span>Build Right Pvt. Ltd.</span>
-                <span>Admin</span>
+                <span>{user?.name || "User"}</span>
+                <span>{user?.role || "Admin"}</span>
               </div>
             </div>
           </a>
@@ -249,7 +257,7 @@ export default function Navbar() {
             }`}
           >
             <li>
-              <a className="dropdown-item" href="profile-settings.html">
+              <Link className="dropdown-item" href="/construction-admin/profile">
                 <span className="icon">
                   <svg
                     width="18"
@@ -270,7 +278,7 @@ export default function Navbar() {
                   </svg>
                 </span>
                 My Profile
-              </a>
+              </Link>
             </li>
 
             <li>
@@ -303,7 +311,7 @@ export default function Navbar() {
             </li>
 
             <li>
-              <a className="dropdown-item" href="login.html">
+              <a className="dropdown-item" href="#" onClick={handleLogout}>
                 <span className="icon">
                   <svg
                     width="18"

@@ -2,12 +2,14 @@ import { create } from "zustand";
 
 interface OffcanvasStore {
     openOffcanvasId: string | null;
-    openOffcanvas: (id: string) => void;
+    offcanvasData: unknown;
+    openOffcanvas: (id: string, data?: unknown) => void;
     closeOffcanvas: () => void;
 }
 
 export const useOffcanvasStore = create<OffcanvasStore>((set) => ({
     openOffcanvasId: null,
-    openOffcanvas: (id: string) => set({ openOffcanvasId: id }),
-    closeOffcanvas: () => set({ openOffcanvasId: null }),
+    offcanvasData: null,
+    openOffcanvas: (id: string, data?: unknown) => set({ openOffcanvasId: id, offcanvasData: data }),
+    closeOffcanvas: () => set({ openOffcanvasId: null, offcanvasData: null }),
 }));

@@ -3,7 +3,7 @@ import { create } from "zustand";
 export interface JobFormData {
   // Step 1: Equipment Selection
   equipmentType: string;
-
+  jobSpecifications: Record<string, unknown>;
   // Step 2: Job Specifications
   lineLength?: string;
   volume?: string;
@@ -11,7 +11,6 @@ export interface JobFormData {
   jobDetails: string[];
   washoutOption: string[];
   notes?: string;
-
   // Step 3: Location Details
   onSiteLocation?: string;
   onSiteLocationDetails?: {
@@ -19,7 +18,6 @@ export interface JobFormData {
     lat?: number;
     lng?: number;
   };
-
   // Step 4: Schedule
   startDate?: string;
   startTime?: string;
@@ -43,6 +41,7 @@ interface JobFormStore {
 const initialFormData: JobFormData = {
   equipmentType: "",
   aggregateTypes: [],
+  jobSpecifications: {},
   jobDetails: [],
   washoutOption: [],
   recurringDays: [],

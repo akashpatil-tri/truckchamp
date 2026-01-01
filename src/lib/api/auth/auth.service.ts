@@ -6,10 +6,9 @@ import {
   type LoginResponse,
 } from "@api/auth/auth.types";
 import apiClient, { ApiResponse } from "@api/client";
-import { AUTH_TOKEN_KEY } from "@lib/constants";
 
 export const authService = {
-  // Login
+  // Login - backend sets HttpOnly cookie
   login: async (data: LoginRequest): Promise<LoginResponse> => {
     try {
       const response = await apiClient.post<ApiResponse<LoginResponse>>(
@@ -17,12 +16,10 @@ export const authService = {
         data
       );
 
-      // If your backend wraps response in { success, data, message }
       if (!response.data.success) {
         throw new Error(response.data.message || "Login failed");
       }
 
-      // Return the actual data, not the wrapper
       return response.data.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -32,12 +29,9 @@ export const authService = {
     }
   },
 
-  // Logout
+  // Logout - backend clears HttpOnly cookie
   logout: async (): Promise<void> => {
     await apiClient.post("/auth/logout");
-    if (typeof window !== "undefined") {
-      localStorage.removeItem(AUTH_TOKEN_KEY);
-    }
   },
 
   // Forgot password
@@ -45,12 +39,10 @@ export const authService = {
     try {
       const response = await apiClient.post("/auth/forgot-password", { email });
 
-      // If your backend wraps response in { success, data, message }
       if (!response.data.success) {
         throw new Error(response.data.message || "Login failed");
       }
 
-      // Return the actual data, not the wrapper
       return response.data.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -73,12 +65,10 @@ export const authService = {
         confirmPassword,
       });
 
-      // If your backend wraps response in { success, data, message }
       if (!response.data.success) {
         throw new Error(response.data.message || "Login failed");
       }
 
-      // Return the actual data, not the wrapper
       return response.data.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -112,8 +102,22 @@ export const authService = {
   },
 
   // Get current user
-  getCurrentUser: async () => {
-    const response = await apiClient.get<ApiResponse<User>>("/auth/me");
-    return response.data.data;
+  getCurrentUser: async (): Promise<User> => {
+    try {
+      const response = await apiClient.get<ApiResponse<User>>("/auth/me");
+
+      if (!response.data.success) {
+        throw new Error(response.data.message || "Token validation failed");
+      }
+
+      return response.data.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(
+          error.response?.data?.message || "Token validation failed"
+        );
+      }
+      throw error;
+    }
   },
 };

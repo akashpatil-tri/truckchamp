@@ -461,7 +461,7 @@ Large devices
   }
 
   .offcanvas-op-btn {
-    padding: 20px 15px;
+    padding: 0 15px 15px 15px;
   }
 
   .offcanvas-title {
@@ -881,27 +881,27 @@ Large devices
 
   .radio-rounded-wrap .radio + label {
     font-size: 13px;
-    padding: 8px 12px 8px 35px;
+    /* padding: 8px 12px 8px 35px; */
   }
 
-  .radio-rounded-wrap .radio + label::before {
+  /* .radio-rounded-wrap .radio + label::before {
     left: 12px;
     width: 16px;
     height: 16px;
     top: 9px;
-  }
+  } */
 
   .checkbox-square-wrap .checkbox + label {
     font-size: 13px;
-    padding: 8px 12px 8px 35px;
+    /* padding: 8px 12px 8px 35px; */
   }
 
-  .checkbox-square-wrap .checkbox + label::before {
+  /* .checkbox-square-wrap .checkbox + label::before {
     left: 12px;
     width: 16px;
     height: 16px;
     top: 9px;
-  }
+  } */
 
   .apple-toggle-wrap label {
     width: 50px;
@@ -1132,7 +1132,7 @@ Large devices
   }
 
   .offcanvas-op-btn {
-    padding: 15px 15px;
+    padding: 0 15px 15px 15px;
   }
 
   .offcanvas-title {

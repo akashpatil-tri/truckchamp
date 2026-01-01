@@ -7,6 +7,7 @@ export const equipmentSelectionSchema = z.object({
 
 // Step 2: Job Specifications Schema
 export const jobSpecificationsSchema = z.object({
+  jobSpecifications: z.record(z.string(), z.unknown()).optional(),
   lineLength: z.string().optional(),
   volume: z
     .string()

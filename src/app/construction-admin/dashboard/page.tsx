@@ -7,7 +7,6 @@ import memIcon from "@assets/svg/d-mem-icon.svg";
 import JobForm from "@forms/JobForm";
 import { useOffcanvasStore } from "@store/useOffcanvasStore";
 
-
 export default function Dashboard() {
   const { openOffcanvas } = useOffcanvasStore();
 

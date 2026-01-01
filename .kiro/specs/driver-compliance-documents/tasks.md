@@ -1,0 +1,69 @@
+# Implementation Plan
+
+- [x] 1. Create DocumentUploadModal component
+  - [x] 1.1 Create DocumentUploadModal component structure and props interface
+    - Create `src/components/common/DocumentUploadModal/index.tsx`
+    - Define TypeScript interface for props (isOpen, onClose, onUpload, title, description, acceptedFormats, maxSizeMB)
+    - Implement basic modal structure with backdrop, content area, and buttons
+    - _Requirements: 3.1, 3.2_
+  - [x] 1.2 Implement drag-and-drop upload area
+    - Add drag event handlers (dragenter, dragleave, dragover, drop)
+    - Implement visual feedback for drag-active state
+    - Add file input with click-to-browse functionality
+    - Display supported file formats text
+    - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
+  - [x] 1.3 Implement file validation and error handling
+    - Validate file format against acceptedFormats prop
+    - Validate file size against maxSizeMB prop
+    - Display error messages for invalid files
+    - _Requirements: 4.3_
+  - [x] 1.4 Implement modal actions (Cancel, Upload, Backdrop click)
+    - Cancel button closes modal without triggering onUpload
+    - Upload button calls onUpload with selected file
+    - Backdrop click closes modal
+    - Reset state on modal close
+    - _Requirements: 5.1, 5.2, 5.3, 5.4_
+  - [x] 1.5 Create DocumentUploadModal CSS styles
+    - Create `src/components/common/DocumentUploadModal/DocumentUploadModal.css`
+    - Style modal to match design (z-index above offcanvas, centered, rounded corners)
+    - Style upload area with dashed border and drag-active state
+    - Style buttons to match existing project patterns
+    - _Requirements: 2.2, 2.3, 2.4, 4.1_
+  - [ ]* 1.6 Write property tests for DocumentUploadModal
+    - **Property 2: Custom props override defaults**
+    - **Property 3: Drag feedback activation**
+    - **Property 4: Valid file acceptance**
+    - **Property 5: Cancel closes without upload**
+    - **Property 6: Upload processes valid file**
+    - **Property 7: Modal close resets state**
+    - **Validates: Requirements 3.1, 3.2, 4.2, 4.3, 5.1, 5.2, 5.4**
+
+- [x] 2. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 3. Add Driver Compliance Documents section to DriverForm
+  - [x] 3.1 Add compliance documents state management
+    - Add state for tracking uploaded documents per document type
+    - Add state for modal visibility and active document type
+    - _Requirements: 6.1_
+  - [x] 3.2 Create document type buttons UI
+    - Add "Driver Compliance Documents" section below Generate Password field
+    - Add descriptive text explaining the purpose
+    - Create four document type buttons with upload icons
+    - _Requirements: 1.1, 1.2, 1.3, 1.4_
+  - [x] 3.3 Integrate DocumentUploadModal with DriverForm
+    - Open modal when document type button is clicked
+    - Pass appropriate props to modal
+    - Handle file upload callback to update document state
+    - _Requirements: 2.1_
+  - [x] 3.4 Add visual distinction for uploaded documents
+    - Style buttons differently when document has been uploaded
+    - Show visual indicator (checkmark or different color) for uploaded documents
+    - _Requirements: 6.1_
+  - [ ]* 3.5 Write property tests for Driver Compliance Documents section
+    - **Property 1: Document button click opens modal**
+    - **Property 8: Uploaded document visual distinction**
+    - **Validates: Requirements 2.1, 6.1**
+
+- [x] 4. Final Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.

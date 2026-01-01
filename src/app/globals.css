@@ -194,6 +194,15 @@ html {
 
 .cblack1 {
   color: #161212 !important;
+  word-break: break-all;
+}
+
+.cblack1-password {
+  max-width: 140px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2;
+  /* align-items: center; */
 }
 
 .cgray {
@@ -367,6 +376,15 @@ hr {
   opacity: 1;
 }
 
+.hr-medium {
+  border-bottom: 2px medium #ececec;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-top: 0;
+  opacity: 1;
+}
+
 .hr {
   border-bottom: 2px dashed #ececec;
   margin-top: 20px;
@@ -386,6 +404,14 @@ hr {
 
 .br14 {
   border-radius: 14px;
+}
+
+.br-fleet-up {
+  border-radius: 14px 14px 0 0;
+}
+
+.br-fleet-down {
+  border-radius: 0 0 14px 14px;
 }
 
 .br15 {
@@ -529,6 +555,11 @@ hr {
   background: #797979 !important;
   color: #ffffff !important;
   border-color: #797979 !important;
+}
+
+.offcanvas-btn-back:hover img {
+  filter: brightness(0) invert(1);
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .btn.btn-outline:hover .btn-outline-arr-icon svg path,
@@ -2772,13 +2803,14 @@ select::-webkit-autofill:focus {
 }
 
 .offcanvas-op-btn {
-  padding: 20px 20px 20px 20px;
+  padding: 0 15px 15px 15px;
 }
 
 .offcanvas-btn-wrap {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  justify-content: end;
+  gap: 20px;
 }
 
 .offcanvas-btn-wrap .btn {
@@ -2789,7 +2821,7 @@ select::-webkit-autofill:focus {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 100%;
+  /* height: 100%; */
 }
 
 /* offcanvas end */
@@ -4348,3 +4380,609 @@ select::-webkit-autofill:focus {
   max-width: 100%;
   height: auto;
 }
+
+.auto-generate-btn {
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d74315;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 15px;
+  border: 0;
+  padding: 10px 20px;
+}
+
+.btn-add-driver {
+  border: 2px dashed #d74315;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* ========================================================
+   INLINE STYLES REPLACEMENT CSS
+   ======================================================== */
+
+/* Status Filter Tab Button */
+.status-tab-btn {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Scrollable List Container */
+.scrollable-list {
+  max-height: calc(100vh - 400px);
+  overflow-y: auto;
+}
+
+.scrollable-list-short {
+  max-height: calc(100vh - 320px);
+  overflow-y: auto;
+}
+
+/* Fleet Info Grid */
+.fleet-info-grid {
+  overflow: hidden;
+}
+
+/* Fleet Info Label */
+.fleet-info-label {
+  color: #6B7280;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Fleet Info Value */
+.fleet-info-value {
+  font-size: 14px;
+  color: #1F2937;
+}
+
+/* Document Table Header Row */
+.doc-table-header-row {
+  background-color: #FEF2EE;
+}
+
+/* Document Table Header Cell */
+.doc-table-header {
+  color: #D74315;
+  font-size: 12px;
+}
+
+.doc-table-header-first {
+  border-radius: 8px 0 0 8px;
+}
+
+.doc-table-header-last {
+  border-radius: 0 8px 8px 0;
+}
+
+/* Document Table Body Cell */
+.doc-table-cell-name {
+  color: #1F2937;
+  font-size: 13px;
+  padding: 16px 20px;
+  font-weight: 500;
+}
+
+.doc-table-cell-date {
+  color: #6B7280;
+  font-size: 13px;
+  padding: 16px 20px;
+}
+
+.doc-table-cell-action {
+  padding: 16px 20px;
+}
+
+/* Document Table Row Border */
+.doc-table-row-border {
+  border-bottom: 1px solid #F3F4F6;
+}
+
+/* Document View Button */
+.doc-view-btn {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+  border-radius: 6px;
+  font-size: 12px;
+  text-decoration: none;
+  border: none;
+  font-weight: 500;
+  padding: 6px 14px;
+}
+
+.doc-view-btn:hover {
+  background-color: #BFDBFE;
+  color: #1E40AF;
+}
+
+/* Document Replace Button */
+.doc-replace-btn {
+  background-color: #FEF2EE;
+  color: #D74315;
+  border-radius: 6px;
+  font-size: 12px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 14px;
+}
+
+.doc-replace-btn:hover {
+  background-color: #FDE8E0;
+}
+
+/* Empty Document Message */
+.doc-empty-message {
+  color: #9CA3AF;
+  font-size: 13px;
+  padding: 32px 20px;
+}
+
+/* Button Border Radius 8px */
+.br8 {
+  border-radius: 8px;
+}
+
+/* Search Input Height */
+.search-input-height {
+  height: 44px;
+}
+
+/* Search Icon Position */
+.search-icon-position {
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Pointer Events None */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Fleet Image Thumbnail */
+.fleet-image-thumbnail {
+  object-fit: cover;
+  height: 80px;
+}
+
+/* Fleet Image Remove Button */
+.fleet-image-remove-btn {
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Fleet Image Upload Slot */
+.fleet-image-slot {
+  height: 80px;
+  cursor: pointer;
+  background-color: #f6f6f4;
+}
+
+.fleet-image-slot:hover {
+  background-color: #ececec;
+}
+
+/* Fleet Upload Icon */
+.fleet-upload-icon {
+  font-size: 24px;
+  color: #797979;
+}
+
+/* Document Upload Button Base */
+.doc-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+/* Document Upload Button - Default State */
+.doc-upload-btn-default {
+  border: 1px solid #ececec;
+  background-color: transparent;
+  color: #797979;
+  cursor: pointer;
+}
+
+.doc-upload-btn-default:hover {
+  border-color: #d74315;
+  color: #d74315;
+}
+
+/* Document Upload Button - Uploaded State */
+.doc-upload-btn-uploaded {
+  border: 1px solid #2e7d32;
+  background-color: #e7f7e8;
+  color: #2e7d32;
+  cursor: pointer;
+}
+
+/* Document Upload Button - Disabled State */
+.doc-upload-btn-disabled {
+  border: 1px solid #ececec;
+  background-color: transparent;
+  color: #797979;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Document Remove Icon */
+.doc-remove-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.doc-remove-icon:hover {
+  background-color: rgba(46, 125, 50, 0.2);
+}
+
+/* Avatar Component Styles */
+.avatar-base {
+  border-radius: 50%;
+}
+
+.avatar-sm {
+  width: 36px;
+  height: 36px;
+  font-size: 12px;
+}
+
+.avatar-md {
+  width: 48px;
+  height: 48px;
+  font-size: 16px;
+}
+
+.avatar-lg {
+  width: 56px;
+  height: 56px;
+  font-size: 20px;
+}
+
+.avatar-primary {
+  background-color: #D74315;
+}
+
+.avatar-secondary {
+  background-color: #797979;
+}
+
+/* Object Fit Cover */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* File Upload Area */
+.file-upload-area-base {
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.file-upload-area-default {
+  border: 2px dashed #ECECEC;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.file-upload-area-error {
+  border: 2px dashed #D74315;
+}
+
+.file-upload-area-drag-active {
+  background-color: #f6f6f4;
+}
+
+.file-upload-area-disabled {
+  cursor: not-allowed;
+}
+
+/* File Upload Content */
+.file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* File Upload Text Colors */
+.file-upload-text-primary {
+  color: #D74315;
+  font-weight: 600;
+}
+
+.file-upload-text-secondary {
+  color: #797979;
+}
+
+.file-upload-text-hint {
+  color: #797979;
+  font-size: 12px;
+  margin: 0;
+}
+
+/* File List Item */
+.file-list-item-text {
+  font-size: 14px;
+  color: #161212;
+}
+
+.file-list-item-remove {
+  color: #D74315;
+}
+
+/* Upload Modal Selected File */
+.upload-modal-file-name {
+  font-size: 14px;
+  color: #161212;
+  font-weight: 500;
+}
+
+/* Hidden Input */
+.hidden-input {
+  display: none;
+}
+
+/* Cursor Pointer */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Cursor Not Allowed */
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+
+
+/* Card Selection Border */
+.card-selected-border {
+  border: 2px solid #D74315;
+}
+
+/* Card Clickable */
+.card-clickable {
+  cursor: pointer;
+}
+
+/* Status Badge Dynamic */
+.status-badge {
+  display: inline-block;
+}
+
+/* Truck Type Placeholder */
+.truck-type-placeholder {
+  width: 48px;
+  height: 48px;
+}
+
+/* Load More Button */
+.load-more-btn {
+  background: none;
+  border: none;
+  color: #d74315;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.load-more-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Border Top Separator */
+.border-top-separator {
+  border-top: 1px solid #ECECEC;
+}
+
+
+
+/* Fleet Status Badge - On the Move */
+.fleet-status-on-the-move {
+  background-color: #e7f7e8;
+  color: #2e7d32;
+}
+
+/* Fleet Status Badge - In Maintenance */
+.fleet-status-in-maintanance {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+/* Fleet Status Badge - Unutilized */
+.fleet-status-utilized {
+  background-color: #fef3e8;
+  color: #D74315;
+}
+
+
+
+/* Dropdown Component Styles */
+.dropdown-trigger {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-trigger-disabled {
+  cursor: not-allowed;
+}
+
+.dropdown-text-placeholder {
+  color: #797979;
+  font-size: 14px;
+}
+
+.dropdown-text-selected {
+  color: #161212;
+  font-size: 14px;
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s;
+}
+
+.dropdown-arrow-open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 250px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-search-wrapper {
+  border-bottom: 1px solid #ECECEC;
+}
+
+.dropdown-search-input {
+  font-size: 14px;
+}
+
+.dropdown-options-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.dropdown-message {
+  color: #797979;
+  font-size: 14px;
+}
+
+.dropdown-option {
+  cursor: pointer;
+  font-size: 14px;
+  color: #161212;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-option:hover {
+  background-color: #f6f6f4;
+}
+
+.dropdown-option-selected {
+  background-color: #f6f6f4;
+}
+
+.dropdown-option-disabled {
+  cursor: not-allowed;
+  color: #ccc;
+  opacity: 0.5;
+}
+
+.dropdown-child-option {
+  padding-left: 24px;
+}
+
+.dropdown-load-more-wrapper {
+  border-top: 1px solid #ECECEC;
+}
+
+.dropdown-load-more-btn {
+  background: none;
+  border: none;
+  color: #d74315;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-weight: 500;
+}
+
+.dropdown-load-more-btn:disabled {
+  cursor: not-allowed;
+}
+
+
+
+/* Document Preview Thumbnail */
+.doc-preview-thumbnail {
+  width: 80px;
+  height: 60px;
+  background-color: #f6f6f4;
+  border-radius: 8px;
+}
+
+/* Border Radius 6px */
+.br6 {
+  border-radius: 6px;
+}
+
+/* Compliance Document Button */
+.compliance-doc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  border: 1px solid #ececec;
+  background-color: transparent;
+  color: #797979;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.compliance-doc-btn:hover {
+  border-color: #d74315;
+  color: #d74315;
+}
+
+.compliance-doc-btn.uploaded {
+  border: 1px solid #2e7d32;
+  background-color: #e7f7e8;
+  color: #2e7d32;
+}
+
+/* Driver Form Label */
+.driver-form-label {
+  color: #161212;
+  font-size: 16px;
+}
+
+.driver-form-description {
+  font-size: 14px;
+}
+

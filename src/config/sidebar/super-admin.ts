@@ -1,11 +1,11 @@
-import { SidebarConfig } from "./types";
-
 // Import icons for super admin
-import dashboardIcon from "@assets/svg/dashboard-icon.svg";
-import teamManagementIcon from "@assets/svg/team-management-icon.svg";
-import jobManagementIcon from "@assets/svg/job-management-icon.svg";
 import billingIcon from "@assets/svg/billing-icon.svg";
+import dashboardIcon from "@assets/svg/dashboard-icon.svg";
+import jobManagementIcon from "@assets/svg/job-management-icon.svg";
 import notificationIcon from "@assets/svg/notification.svg";
+import teamManagementIcon from "@assets/svg/team-management-icon.svg";
+
+import { SidebarConfig } from "./types";
 
 export const superAdminSidebar: SidebarConfig = {
   role: "super_admin",

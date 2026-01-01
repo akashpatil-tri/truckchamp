@@ -19,7 +19,6 @@ export default function FileUpload({
   multiple = false,
   maxFiles = 1,
   maxSizeMB = 10,
-  label = "Upload File",
   error = "",
   disabled = false,
   existingFiles = [],
@@ -85,25 +84,14 @@ export default function FileUpload({
   return (
     <div className="file-upload-wrapper">
       <div
-        className={`file-upload-area ${dragActive ? "drag-active" : ""} ${
-          disabled ? "disabled" : ""
-        } ${error || localError ? "error" : ""}`}
+        className={`file-upload-area-base ${dragActive ? "file-upload-area-drag-active" : ""} ${
+          disabled ? "file-upload-area-disabled cursor-not-allowed" : "cursor-pointer"
+        } ${error || localError ? "file-upload-area-error" : "file-upload-area-default"}`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
         onDrop={handleDrop}
         onClick={handleClick}
-        style={{
-          border: `2px dashed ${
-            error || localError ? "#D74315" : "#ECECEC"
-          }`,
-          borderRadius: "10px",
-          padding: "20px",
-          textAlign: "center",
-          cursor: disabled ? "not-allowed" : "pointer",
-          backgroundColor: dragActive ? "#f6f6f4" : "transparent",
-          transition: "all 0.2s",
-        }}
       >
         <input
           ref={fileInputRef}
@@ -111,18 +99,11 @@ export default function FileUpload({
           accept={accept}
           multiple={multiple}
           onChange={handleFileChange}
-          style={{ display: "none" }}
+          className="hidden-input"
           disabled={disabled}
         />
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
+        <div className="file-upload-content">
           <svg
             width="40"
             height="40"
@@ -145,12 +126,10 @@ export default function FileUpload({
             />
           </svg>
           <div>
-            <span style={{ color: "#D74315", fontWeight: 600 }}>
-              Click to upload
-            </span>
-            <span style={{ color: "#797979" }}> or drag and drop</span>
+            <span className="file-upload-text-primary">Click to upload</span>
+            <span className="file-upload-text-secondary"> or drag and drop</span>
           </div>
-          <p style={{ color: "#797979", fontSize: "12px", margin: 0 }}>
+          <p className="file-upload-text-hint">
             {accept === "image/*"
               ? "PNG, JPG, JPEG (max. 10MB)"
               : `Max ${maxSizeMB}MB per file`}
@@ -171,15 +150,14 @@ export default function FileUpload({
               key={index}
               className="d-flex align-items-center justify-content-between p-2 mb-2 border br10"
             >
-              <span style={{ fontSize: "14px", color: "#161212" }}>
+              <span className="file-list-item-text">
                 {typeof file === "string" ? file : (file as File).name}
               </span>
               {onRemoveFile && (
                 <button
                   type="button"
                   onClick={() => onRemoveFile(index)}
-                  className="btn-unstyled"
-                  style={{ color: "#D74315" }}
+                  className="btn-unstyled file-list-item-remove"
                 >
                   Remove
                 </button>

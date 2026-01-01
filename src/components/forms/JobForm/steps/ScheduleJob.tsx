@@ -28,7 +28,6 @@ const ScheduleJob = forwardRef<ScheduleJobRef>((_props, ref) => {
     register,
     formState: { errors },
     setValue,
-    watch,
     trigger,
   } = useForm<ScheduleJobData>({
     resolver: zodResolver(scheduleJobSchema),
@@ -112,10 +111,9 @@ const ScheduleJob = forwardRef<ScheduleJobRef>((_props, ref) => {
   };
 
   const handleDayToggle = (day: string) => {
-    const currentDays = watch("recurringDays") || [];
-    const updated = currentDays.includes(day)
-      ? currentDays.filter((d) => d !== day)
-      : [...currentDays, day];
+    const updated = selectedDays.includes(day)
+      ? selectedDays.filter((d: string) => d !== day)
+      : [...selectedDays, day];
 
     setSelectedDays(updated);
     setValue("recurringDays", updated, { shouldValidate: true });

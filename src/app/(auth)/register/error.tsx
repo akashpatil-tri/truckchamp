@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
 import AuthLayout from "@layout/AuthLayout";
-import Button from "@/components/common/Button";
 
 export default function RegisterErrorPage() {
   return (
@@ -16,21 +16,16 @@ export default function RegisterErrorPage() {
             The registration token is either invalid, expired, or missing.
           </p>
         </div>
-        
+
         <div className="space-y-3">
           <p className="text-sm text-gray-500">
-            Please check your email for a valid registration link or contact support.
+            Please check your email for a valid registration link or contact
+            support.
           </p>
-          
-          
-            <Link 
-            className="offcanvas-btn-back btn btn-outline"
-            href="/login" 
-          >
+
+          <Link className="offcanvas-btn-back btn btn-outline" href="/login">
             Go to Login
           </Link>
-          
-          
         </div>
       </div>
     </AuthLayout>

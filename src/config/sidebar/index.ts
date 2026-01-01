@@ -1,7 +1,7 @@
-import { SidebarConfig, UserRole } from "./types";
 import { constructionAdminSidebar } from "./construction-admin";
-import { truckOperatorSidebar } from "./truck-operator";
 import { superAdminSidebar } from "./super-admin";
+import { truckOperatorSidebar } from "./truck-operator";
+import { SidebarConfig, UserRole } from "./types";
 
 // Map of all sidebar configurations
 const sidebarConfigs: Record<UserRole, SidebarConfig> = {

@@ -1,0 +1,124 @@
+/* Modal Backdrop - higher z-index to appear above offcanvas */
+.document-upload-modal-backdrop {
+  z-index: 1055;
+}
+
+/* Modal Content - highest z-index */
+.document-upload-modal {
+  z-index: 1056;
+}
+
+/* Modal Dialog */
+.document-upload-modal-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Modal Title */
+.document-upload-modal-title {
+  color: #000;
+  font-size: 20px;
+}
+
+/* Modal Description */
+.document-upload-modal-description {
+  color: #797979;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Upload Area */
+.document-upload-area {
+  border: 2px dashed #d74315;
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.document-upload-area:hover {
+  background-color: #fef8f6;
+}
+
+.document-upload-area.drag-active {
+  background-color: #fef8f6;
+  border-color: #d74315;
+}
+
+/* Upload Content */
+.document-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Upload Icon */
+.document-upload-icon {
+  margin-bottom: 8px;
+}
+
+/* Upload Text */
+.document-upload-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #161212;
+  margin-bottom: 4px;
+}
+
+/* Upload Formats */
+.document-upload-formats {
+  font-size: 12px;
+  color: #797979;
+  margin-bottom: 8px;
+}
+
+/* Upload Link */
+.document-upload-link {
+  font-size: 14px;
+  color: #797979;
+  margin-bottom: 0;
+}
+
+.document-upload-link span {
+  color: #d74315;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.document-upload-link span:hover {
+  text-decoration: underline;
+}
+
+/* Selected File */
+.document-upload-selected {
+  text-align: center;
+}
+
+.document-upload-filename {
+  font-size: 14px;
+  font-weight: 500;
+  color: #161212;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.document-upload-filesize {
+  font-size: 12px;
+  color: #797979;
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 575.98px) {
+  .document-upload-modal-content {
+    max-width: 100%;
+    margin: 0 15px;
+  }
+
+  .document-upload-area {
+    padding: 20px 15px;
+  }
+}

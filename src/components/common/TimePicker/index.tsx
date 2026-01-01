@@ -37,14 +37,14 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
       disabled = false,
       id,
     },
-    _ref
+    ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [hours, setHours] = useState(value ? value.getHours() % 12 || 12 : 1);
-    const [minutes, setMinutes] = useState(value ? value.getMinutes() : 0);
-    const [period, setPeriod] = useState<"AM" | "PM">(
-      value && value.getHours() >= 12 ? "PM" : "AM"
-    );
+
+    // Derive values from props instead of using separate state
+    const hours = value ? value.getHours() % 12 || 12 : 1;
+    const minutes = value ? value.getMinutes() : 0;
+    const period: "AM" | "PM" = value && value.getHours() >= 12 ? "PM" : "AM";
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -62,14 +62,6 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
       return () =>
         document.removeEventListener("mousedown", handleClickOutside);
     }, []);
-
-    useEffect(() => {
-      if (value) {
-        setHours(value.getHours() % 12 || 12);
-        setMinutes(value.getMinutes());
-        setPeriod(value.getHours() >= 12 ? "PM" : "AM");
-      }
-    }, [value]);
 
     const formatTime = (date: Date | null) => {
       if (!date) return "";
@@ -95,31 +87,26 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
 
     const incrementHour = () => {
       const newHours = hours === 12 ? 1 : hours + 1;
-      setHours(newHours);
       updateTime(newHours, minutes, period);
     };
 
     const decrementHour = () => {
       const newHours = hours === 1 ? 12 : hours - 1;
-      setHours(newHours);
       updateTime(newHours, minutes, period);
     };
 
     const incrementMinute = () => {
       const newMinutes = minutes === 55 ? 0 : minutes + 5;
-      setMinutes(newMinutes);
       updateTime(hours, newMinutes, period);
     };
 
     const decrementMinute = () => {
       const newMinutes = minutes === 0 ? 55 : minutes - 5;
-      setMinutes(newMinutes);
       updateTime(hours, newMinutes, period);
     };
 
     const togglePeriod = () => {
       const newPeriod = period === "AM" ? "PM" : "AM";
-      setPeriod(newPeriod);
       updateTime(hours, minutes, newPeriod);
     };
 
@@ -127,6 +114,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
       <div ref={wrapperRef} className="timepicker-custom position-relative">
         <div className="position-relative">
           <input
+            ref={ref}
             type="text"
             id={id}
             className={clsx("form-control border", className)}
@@ -137,8 +125,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
             disabled={disabled}
           />
           <span
-            className="position-absolute top-50 end-0 translate-middle-y me-3"
-            style={{ pointerEvents: "none" }}
+            className="position-absolute top-50 end-0 translate-middle-y me-3 pointer-events-none"
           >
             <svg
               width="20"

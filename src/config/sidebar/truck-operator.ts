@@ -1,11 +1,12 @@
-import { SidebarConfig } from "./types";
 
-// Import icons for truck operator
-import dashboardIcon from "@assets/svg/dashboard-icon.svg";
 import jobManagementIcon from "@assets/svg/d-job-icon.svg";
 import teamManagementIcon from "@assets/svg/d-mem-icon.svg";
-import billingIcon from "@assets/svg/billing-icon.svg";
-import notificationIcon from "@assets/svg/notification.svg";
+import dashboardIcon from "@assets/svg/dashboard-icon.svg";
+import driverManagementIcon from "@assets/svg/driver-management.svg"
+import fleetManagementIcon from "@assets/svg/fleet-management.svg"
+import scheduleIcon from "@assets/svg/schedule.svg"
+
+import { SidebarConfig } from "./types";
 
 export const truckOperatorSidebar: SidebarConfig = {
   role: "truck_operator",
@@ -13,45 +14,44 @@ export const truckOperatorSidebar: SidebarConfig = {
     {
       id: "dashboard",
       label: "Dashboard",
-      href: "/dashboard",
+      href: "/truck-operator/dashboard",
       icon: dashboardIcon,
     },
     {
-      id: "available-jobs",
-      label: "Available Jobs",
-      href: "/jobs/available",
+      id: "job-feed",
+      label: "Job Feed",
+      href: "/truck-operator/job-feed",
       icon: jobManagementIcon,
     },
     {
-      id: "my-jobs",
-      label: "My Jobs",
-      href: "/jobs/my-jobs",
+      id: "job-management",
+      label: "Job Management",
+      href: "/truck-operator/job-management",
       icon: jobManagementIcon,
     },
     {
-      id: "drivers",
-      label: "Drivers",
-      href: "/drivers",
+      id: "manage-team-members",
+      label: "Manage Team Members",
+      href: "/truck-operator/team-members",
       icon: teamManagementIcon,
     },
     {
-      id: "trucks",
-      label: "Truck Fleet",
-      href: "/trucks",
-      icon: teamManagementIcon,
+      id: "fleet-management",
+      label: "Fleet Management",
+      href: "/truck-operator/fleet-management",
+      icon: fleetManagementIcon,
     },
     {
-      id: "earnings",
-      label: "Earnings",
-      href: "/earnings",
-      icon: billingIcon,
+      id: "driver-management",
+      label: "Driver Management",
+      href: "/truck-operator/drivers",
+      icon: driverManagementIcon,
     },
     {
-      id: "notifications",
-      label: "Notifications",
-      href: "/notifications",
-      icon: notificationIcon,
-      badge: "5", // Example badge
+      id: "schedule",
+      label: "Schedule",
+      href: "/truck-operator/schedule",
+      icon: scheduleIcon,
     },
   ],
 };

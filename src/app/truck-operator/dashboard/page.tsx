@@ -78,7 +78,9 @@ export default function Dashboard() {
                       </div>
                       <div className="box-count-txt-wrap ps-2">
                         <div className="box-count-head">00</div>
-                        <div className="box-count-shead">Total Team Members</div>
+                        <div className="box-count-shead">
+                          Total Team Members
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -198,7 +200,8 @@ export default function Dashboard() {
                   <div className="job-card-txt-wrap">
                     <div className="job-card-txt-t">No Incoming Jobs yet</div>
                     <p className="job-card-txt-p mb-0">
-                      No incoming jobs yet. Keep an eye here for new job requests.
+                      No incoming jobs yet. Keep an eye here for new job
+                      requests.
                     </p>
                   </div>
                 </div>

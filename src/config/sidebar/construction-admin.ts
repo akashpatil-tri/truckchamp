@@ -1,11 +1,12 @@
-import { SidebarConfig } from "./types";
 
 // Import icons for construction admin
+import billingIcon from "@assets/svg/billing-icon.svg";
 import dashboardIcon from "@assets/svg/dashboard-icon.svg";
 import jobManagementIcon from "@assets/svg/job-management-icon.svg";
-import teamManagementIcon from "@assets/svg/team-management-icon.svg";
-import billingIcon from "@assets/svg/billing-icon.svg";
 import ratingIcon from "@assets/svg/rating-icon.svg";
+import teamManagementIcon from "@assets/svg/team-management-icon.svg";
+
+import { SidebarConfig } from "./types";
 
 export const constructionAdminSidebar: SidebarConfig = {
   role: "construction_admin",

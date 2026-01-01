@@ -7,7 +7,8 @@
 .fleet-image-slot {
   height: 100px;
   cursor: pointer;
-  background-color: #f6f6f4;
+  background-color: #feefeb;
+  border: 2px dashed #d74315;
 }
 
 .fleet-image-remove-btn {
@@ -32,6 +33,11 @@
 .doc-upload-btn {
   font-size: 14px;
   cursor: pointer;
+}
+
+.doc-readonly-btn {
+  font-size: 14px;
+  cursor: not-allowed;
 }
 
 .doc-upload-btn--uploaded-green {

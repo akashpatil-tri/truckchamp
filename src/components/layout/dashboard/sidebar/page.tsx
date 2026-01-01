@@ -1,14 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { getSidebarConfig, type UserRole } from "@/config/sidebar";
 
 interface SideBarProps {
   userRole: UserRole;
-  pathname: string;
 }
 
-export default function SideBar({ userRole, pathname }: SideBarProps) {
+export default function SideBar({ userRole }: SideBarProps) {
+  const pathname = usePathname();
   const sidebarConfig = getSidebarConfig(userRole);
 
   return (

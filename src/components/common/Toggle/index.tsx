@@ -36,7 +36,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       labelClassName = "",
       descriptionClassName = "",
       togglePosition = "right",
-      children,
+      // children,
       id,
       ...props
     },

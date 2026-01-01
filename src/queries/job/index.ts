@@ -50,13 +50,8 @@ export const useUpdateJobMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
-      id,
-      data,
-    }: {
-      id: string;
-      data: Partial<CreateJobData>;
-    }) => jobService.updateJob(id, data),
+    mutationFn: ({ id, data }: { id: string; data: Partial<CreateJobData> }) =>
+      jobService.updateJob(id, data),
     onSuccess: (response) => {
       toast.success(response.message || "Job updated successfully!");
       queryClient.invalidateQueries({ queryKey: ["jobs"] });

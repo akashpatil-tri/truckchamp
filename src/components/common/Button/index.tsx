@@ -30,6 +30,7 @@ export interface ButtonAsButton extends BaseButtonProps {
   href?: never;
   target?: never;
   rel?: never;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 

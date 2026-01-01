@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 
 import { GOOGLE_MAPS_API_KEY } from "@constants";
+import { AuthProvider } from "@providers/AuthProvider";
 import QueryProvider from "@providers/QueryProvider";
 
 import type { Metadata } from "next";
@@ -65,8 +66,10 @@ export default function RootLayout({
         />
 
         <QueryProvider>
-          {children}
-          <Toaster />
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
         </QueryProvider>
       </body>
     </html>

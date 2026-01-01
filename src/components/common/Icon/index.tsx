@@ -398,8 +398,8 @@ export const Icon = ({
   isSpinner,
   fill,
   stroke,
-  ...restProps
-}: IconProps) => {
+}: // ...restProps
+IconProps) => {
   const style = {
     color: fill,
     stroke,
@@ -807,7 +807,7 @@ export const Icon = ({
       );
     }
     if (iconType === "custom") {
-      return <Image imgPath={name} width={32} height={32} />;
+      return <Image imgPath={name} width={32} height={32} alt={name} />;
     }
     return null;
   };

@@ -1,104 +1,272 @@
 "use client";
 
-import { forwardRef, useImperativeHandle } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import Checkbox from "@common/Checkbox";
-import Input from "@common/Input";
-import Radio from "@common/Radio";
-import {
-  AGGREGATE_TYPES,
-  EQUIPMENT_TYPES,
-  JOB_DETAILS,
-  LINE_LENGTHS,
-  WASHOUT_OPTIONS,
-} from "@constants";
+import DynamicPropertyFields, {
+  Property,
+  type PropertyValue,
+} from "@forms/JobForm/DynamicPropertyFields";
 import { useJobFormStore } from "@store/useJobFormStore";
 
-import {
-  jobSpecificationsSchema,
-  type JobSpecificationsData,
-} from "@/lib/schemas/job.schema";
+import { SelectEquipmentProps } from "@/lib/api/truck/truck.types";
+import { useTruckPropertiesQuery } from "@/queries/truck";
 
 export interface SelectJobSpecificationRef {
   validateForm: () => Promise<boolean>;
 }
 
-const JobSpecifications = forwardRef<SelectJobSpecificationRef>((_props, ref) => {
-  const { formData, updateFormData } = useJobFormStore();
+// Add dynamic validation schema creator
+const createDynamicValidationSchema = (properties: Property[]) => {
+  const schemaFields: Record<string, unknown> = {};
 
-  const selectedEquipment = EQUIPMENT_TYPES.find(
-    (e) => e.id === formData.equipmentType
+  properties.forEach((prop) => {
+    const {
+      property_key,
+      property_label,
+      is_required,
+      html_type,
+      options,
+      min_value,
+      max_value,
+    } = prop;
+
+    if (html_type === "radio-input" && options) {
+      schemaFields[property_key] = is_required
+        ? z.string().min(1, `${property_label} is required`)
+        : z.string().optional();
+    } else if (html_type === "checkbox-input" && options) {
+      schemaFields[property_key] = is_required
+        ? z
+            .array(z.string())
+            .min(1, `At least one ${property_label} is required`)
+        : z.array(z.string()).optional();
+    } else if (html_type === "checkbox-input" && !options) {
+      schemaFields[property_key] = is_required
+        ? z.boolean().refine((val) => val === true, {
+            message: `${property_label} must be checked`,
+          })
+        : z.boolean().optional();
+    } else if (html_type === "number-input") {
+      let schema = z.string(); // Start with string validation
+
+      if (is_required) {
+        schema = schema.min(1, `${property_label} is required`);
+      }
+
+      // Then transform and validate as number
+      let numberSchema = schema.transform((val, ctx) => {
+        if (val === "" || val === undefined) {
+          if (is_required) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: `${property_label} is required`,
+            });
+            return z.NEVER;
+          }
+          return undefined;
+        }
+
+        const num = Number(val);
+        if (isNaN(num)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: `${property_label} must be a valid number`,
+          });
+          return z.NEVER;
+        }
+        return num;
+      });
+
+      if (min_value !== null && min_value !== undefined) {
+        numberSchema = numberSchema.refine(
+          (val) => val === undefined || val >= min_value,
+          { message: `${property_label} must be at least ${min_value}` }
+        );
+      }
+
+      if (max_value !== null && max_value !== undefined) {
+        numberSchema = numberSchema.refine(
+          (val) => val === undefined || val <= max_value,
+          { message: `${property_label} must be at most ${max_value}` }
+        );
+      }
+
+      schemaFields[property_key] = numberSchema;
+    } else if (html_type === "text-input") {
+      schemaFields[property_key] = is_required
+        ? z.string().min(1, `${property_label} is required`)
+        : z.string().optional();
+    } else if (html_type === "range-input") {
+      schemaFields[property_key] = is_required
+        ? z
+            .number()
+            .min(min_value || 0)
+            .max(max_value || 100)
+        : z.number().optional();
+    }
+  });
+
+  return z.object(schemaFields);
+};
+
+const JobSpecifications = forwardRef<
+  SelectJobSpecificationRef,
+  SelectEquipmentProps
+>((props, ref) => {
+  const { data, enabled } = props;
+
+  const { formData, updateFormData } = useJobFormStore();
+  const [truckProperties, setTruckProperties] = useState<Property[]>([]);
+  const [dynamicPropertyValues, setDynamicPropertyValues] = useState<
+    Record<string, PropertyValue>
+  >({});
+  const [propertyErrors, setPropertyErrors] = useState<Record<string, string>>(
+    {}
   );
+  const [dynamicSchema, setDynamicSchema] = useState<z.ZodTypeAny | null>(null);
+
+  const selectedEquipment = data?.data?.find(
+    (e: { id: string }) => e.id === formData.equipmentType
+  );
+
+  const { data: truckPropertiesData, isPending } = useTruckPropertiesQuery(
+    selectedEquipment?.id || null,
+    enabled
+  );
+
+  useEffect(() => {
+    if (!Array.isArray(truckPropertiesData) || !enabled || isPending) {
+      return;
+    }
+
+    const properties = truckPropertiesData.filter(Boolean) as Property[];
+
+    const initializeProperties = () => {
+      const schema = createDynamicValidationSchema(properties);
+
+      const initialValues: Record<string, PropertyValue> = {};
+      properties.forEach((prop) => {
+        if (prop.default_value) {
+          initialValues[prop.property_key] = prop.default_value;
+        } else if (prop.html_type === "checkbox-input" && prop.options) {
+          initialValues[prop.property_key] = [];
+        } else if (prop.html_type === "checkbox-input" && !prop.options) {
+          initialValues[prop.property_key] = false;
+        } else if (prop.html_type === "radio-input") {
+          initialValues[prop.property_key] = "";
+        } else if (prop.html_type === "text-input") {
+          initialValues[prop.property_key] = "";
+        } else if (prop.html_type === "number-input") {
+          initialValues[prop.property_key] = "";
+        }
+      });
+
+      setTruckProperties(properties);
+      setDynamicSchema(schema);
+      setDynamicPropertyValues(initialValues);
+      updateFormData({ jobSpecifications: initialValues });
+    };
+
+    initializeProperties();
+  }, [truckPropertiesData, enabled, isPending, updateFormData]);
+
+  const notesOnlySchema = z.object({
+    notes: z.string().optional(),
+  });
 
   const {
     register,
     formState: { errors },
-    setValue,
-    watch,
     trigger,
-  } = useForm<JobSpecificationsData>({
-    resolver: zodResolver(jobSpecificationsSchema),
+  } = useForm<{ notes?: string }>({
+    resolver: zodResolver(notesOnlySchema),
     mode: "onBlur",
     defaultValues: {
-      lineLength: formData.lineLength,
-      volume: formData.volume,
-      aggregateTypes: formData.aggregateTypes,
-      jobDetails: formData.jobDetails,
-      washoutOption: formData.washoutOption,
       notes: formData.notes,
     },
   });
 
   useImperativeHandle(ref, () => ({
     validateForm: async () => {
-      return await trigger();
+      const notesValid = await trigger();
+
+      if (dynamicSchema) {
+        try {
+          const valuesToValidate = { ...dynamicPropertyValues };
+          truckProperties.forEach((prop) => {
+            if (
+              prop.html_type === "number-input" &&
+              valuesToValidate[prop.property_key]
+            ) {
+              valuesToValidate[prop.property_key] = Number(
+                valuesToValidate[prop.property_key]
+              );
+            }
+          });
+
+          dynamicSchema.parse(valuesToValidate);
+
+          setPropertyErrors({});
+          return notesValid;
+        } catch (error) {
+          if (error instanceof z.ZodError) {
+            const errors: Record<string, string> = {};
+            error.issues.forEach((err) => {
+              if (err.path[0]) {
+                errors[err.path[0] as string] = err.message;
+              }
+            });
+            setPropertyErrors(errors);
+
+            const firstErrorKey = Object.keys(errors)[0];
+            if (firstErrorKey) {
+              const element = document.getElementById(firstErrorKey);
+              element?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            return false;
+          }
+        }
+      }
+
+      return notesValid;
     },
   }));
 
-  const handleLineLengthChange = (lineLength: string) => {
-    setValue("lineLength", lineLength, { shouldValidate: true });
-    updateFormData({ lineLength });
+  const handleDynamicPropertyChange = (key: string, value: PropertyValue) => {
+    const updatedValues = {
+      ...dynamicPropertyValues,
+      [key]: value,
+    };
+
+    setDynamicPropertyValues(updatedValues);
+
+    updateFormData({ jobSpecifications: updatedValues });
+
+    if (propertyErrors[key]) {
+      setPropertyErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[key];
+        return newErrors;
+      });
+    }
   };
 
-  const handleAggregateTypeChange = (type: string, checked: boolean) => {
-    const current = watch("aggregateTypes") || [];
-    const updated = checked
-      ? [...current, type]
-      : current.filter((t) => t !== type);
-    setValue("aggregateTypes", updated, { shouldValidate: true });
-    updateFormData({ aggregateTypes: updated });
-  };
-
-  const handleJobDetailChange = (detail: string, checked: boolean) => {
-    const current = watch("jobDetails") || [];
-    const updated = checked
-      ? [...current, detail]
-      : current.filter((d) => d !== detail);
-    setValue("jobDetails", updated, { shouldValidate: true });
-    updateFormData({ jobDetails: updated });
-  };
-
-  const handleWashoutChange = (option: string, checked: boolean) => {
-    const current = watch("washoutOption") || [];
-    const updated = checked
-      ? [...current, option]
-      : current.filter((o) => o !== option);
-    setValue("washoutOption", updated, { shouldValidate: true });
-    updateFormData({ washoutOption: updated });
-  };
-
-  // Separate register for volume and notes with custom onChange
-  const volumeRegister = register("volume", {
-    onChange: (e) => updateFormData({ volume: e.target.value }),
-  });
-
+  // Separate register for notes with custom onChange
   const notesRegister = register("notes", {
     onChange: (e) => updateFormData({ notes: e.target.value }),
   });
+
+  if (isPending)
+    return (
+      <div className="offcanvas-body-inner text-center py-5">
+        <p className="mb-0">Loading truck properties…</p>
+      </div>
+    );
 
   return (
     <div className="offcanvas-body-inner">
@@ -107,13 +275,14 @@ const JobSpecifications = forwardRef<SelectJobSpecificationRef>((_props, ref) =>
       <div className="selected-fleet-wrap">
         <div className="selected-fleet-tl">Selected Fleet</div>
         <div className="selected-fleet-nm">
-          {selectedEquipment?.image && (
+          {selectedEquipment?.image_url && (
             <Image
-              src={selectedEquipment.image}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}${selectedEquipment.image_url}`}
               alt={selectedEquipment.name}
               width={24}
               height={24}
               className="img-fluid"
+              unoptimized
             />
           )}
           <span className="selected-fleet-nm-t">{selectedEquipment?.name}</span>
@@ -122,106 +291,20 @@ const JobSpecifications = forwardRef<SelectJobSpecificationRef>((_props, ref) =>
 
       <hr />
 
-      {/* Show Line Length only for specific equipment types */}
-      {(formData.equipmentType === "line-pump" ||
-        formData.equipmentType === "boom-pump") && (
-        <div className="form-group">
-          <label className="form-label">Line Length Required</label>
-          <div className="radio-rounded-main">
-            {LINE_LENGTHS.map((length, index) => (
-              <Radio
-                key={length}
-                id={`lineLength${index + 1}`}
-                name="lineLength"
-                value={length}
-                label={length}
-                variant="rounded"
-                checked={watch("lineLength") === length}
-                onChange={() => handleLineLengthChange(length)}
-              />
-            ))}
-          </div>
+      {truckProperties?.length > 0 ? (
+        <DynamicPropertyFields
+          properties={truckProperties}
+          values={dynamicPropertyValues}
+          onChange={handleDynamicPropertyChange}
+          errors={propertyErrors}
+        />
+      ) : (
+        <div className="alert alert-warning">
+          Please select a truck type to see properties
         </div>
       )}
 
-      <div className="form-group">
-        <label htmlFor="form-vol" className="form-label">
-          Volume (m³)
-        </label>
-        <Input
-          id="form-vol"
-          type="number"
-          placeholder="Enter Volume (m³)"
-          {...volumeRegister}
-          inputClass={`form-control border ${
-            errors.volume ? "input-error" : ""
-          }`}
-          aria-invalid={errors.volume ? "true" : "false"}
-          aria-describedby={errors.volume ? "volume-error" : undefined}
-        />
-        {errors.volume && (
-          <p
-            id="volume-error"
-            role="alert"
-            className="text-primary form-text mt-2 small"
-          >
-            {errors.volume?.message}
-          </p>
-        )}
-      </div>
-
-      <div className="form-group">
-        <label className="form-label">Aggregate Type</label>
-        <div className="checkbox-square-main">
-          {AGGREGATE_TYPES.map((type, index) => (
-            <Checkbox
-              key={type}
-              id={`atype${index}`}
-              name={`atype${index}`}
-              label={type}
-              value={type}
-              checked={watch("aggregateTypes")?.includes(type) || false}
-              onChange={(e) =>
-                handleAggregateTypeChange(type, e.target.checked)
-              }
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="form-group">
-        <label className="form-label">Job Details</label>
-        <div className="checkbox-square-main">
-          {JOB_DETAILS.map((detail, index) => (
-            <Checkbox
-              key={detail}
-              id={`jde${index}`}
-              name={`jde${index}`}
-              label={detail}
-              value={detail}
-              checked={watch("jobDetails")?.includes(detail) || false}
-              onChange={(e) => handleJobDetailChange(detail, e.target.checked)}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="form-group">
-        <label className="form-label">Washout Option</label>
-        <div className="checkbox-square-main">
-          {WASHOUT_OPTIONS.map((option, index) => (
-            <Checkbox
-              key={option}
-              id={`washout${index}`}
-              name={`washout${index}`}
-              label={option}
-              value={option}
-              checked={watch("washoutOption")?.includes(option) || false}
-              onChange={(e) => handleWashoutChange(option, e.target.checked)}
-            />
-          ))}
-        </div>
-      </div>
+      <hr />
 
       <div className="form-group">
         <label htmlFor="form-notes" className="form-label">

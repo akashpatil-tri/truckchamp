@@ -20,6 +20,71 @@ export interface DateTimePickerProps {
   id?: string;
 }
 
+// Custom input component defined outside to avoid recreation on each render
+const CustomInput = forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    type?: "date" | "time";
+    disabled?: boolean;
+  }
+>(
+  (
+    { value, onClick, placeholder, className, disabled, id, type },
+    inputRef
+  ) => (
+    <div className="position-relative">
+      <input
+        ref={inputRef}
+        type="text"
+        className={clsx("form-control border", className)}
+        value={value as string}
+        onClick={onClick}
+        placeholder={placeholder}
+        readOnly
+        disabled={disabled}
+        id={id}
+      />
+      <span className="position-absolute top-50 end-0 translate-middle-y me-3 pointer-events-none">
+        {type === "time" ? (
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="10" cy="10" r="8" stroke="#999" strokeWidth="1.5" />
+            <path d="M10 6V10L13 13" stroke="#999" strokeWidth="1.5" />
+          </svg>
+        ) : (
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="3"
+              y="4"
+              width="14"
+              height="13"
+              rx="2"
+              stroke="#999"
+              strokeWidth="1.5"
+            />
+            <path d="M3 8H17" stroke="#999" strokeWidth="1.5" />
+            <path d="M7 2V6" stroke="#999" strokeWidth="1.5" />
+            <path d="M13 2V6" stroke="#999" strokeWidth="1.5" />
+          </svg>
+        )}
+      </span>
+    </div>
+  )
+);
+
+CustomInput.displayName = "CustomInput";
+
 /**
  * DateTimePicker component using react-datepicker with Bootstrap styling
  *
@@ -45,7 +110,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
       disabled = false,
       id,
     },
-    _ref
+    ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -57,65 +122,6 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
 
     const showTimeSelect = type === "time";
     const showTimeSelectOnly = type === "time";
-
-    const CustomInput = forwardRef<
-      HTMLInputElement,
-      React.InputHTMLAttributes<HTMLInputElement>
-    >(({ value, onClick }, inputRef) => (
-      <div className="position-relative">
-        <input
-          ref={inputRef}
-          type="text"
-          className={clsx("form-control border", className)}
-          value={value as string}
-          onClick={onClick}
-          placeholder={placeholder}
-          readOnly
-          disabled={disabled}
-          id={id}
-        />
-        <span
-          className="position-absolute top-50 end-0 translate-middle-y me-3"
-          style={{ pointerEvents: "none" }}
-        >
-          {type === "time" ? (
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="10" cy="10" r="8" stroke="#999" strokeWidth="1.5" />
-              <path d="M10 6V10L13 13" stroke="#999" strokeWidth="1.5" />
-            </svg>
-          ) : (
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="3"
-                y="4"
-                width="14"
-                height="13"
-                rx="2"
-                stroke="#999"
-                strokeWidth="1.5"
-              />
-              <path d="M3 8H17" stroke="#999" strokeWidth="1.5" />
-              <path d="M7 2V6" stroke="#999" strokeWidth="1.5" />
-              <path d="M13 2V6" stroke="#999" strokeWidth="1.5" />
-            </svg>
-          )}
-        </span>
-      </div>
-    ));
-
-    CustomInput.displayName = "CustomInput";
 
     return (
       <div className="bdatetime position-relative">
@@ -130,7 +136,16 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
           minDate={minDate}
           maxDate={maxDate}
           disabled={disabled}
-          customInput={<CustomInput />}
+          customInput={
+            <CustomInput
+              type={type}
+              disabled={disabled}
+              placeholder={placeholder}
+              className={className}
+              id={id}
+              ref={ref}
+            />
+          }
           wrapperClassName="w-100"
           calendarClassName="bootstrap-datetimepicker-widget"
           popperClassName="bdatetime-popper"

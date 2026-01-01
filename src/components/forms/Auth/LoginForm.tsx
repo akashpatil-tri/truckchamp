@@ -10,14 +10,16 @@ import { useForm } from "react-hook-form";
 
 import Button from "@common/Button";
 import Input from "@common/Input";
+import { useAuth } from "@providers/AuthProvider";
 import { useLoginMutation } from "@queries/auth";
 
+import { UserRole } from "@/lib/api/auth/auth.types";
 import { loginSchema, type LoginFormData } from "@/lib/schemas/auth.schema";
 import { getRoleBasedDashboard } from "@/lib/utils/auth.utils";
-import { UserRole } from "@/lib/api/auth/auth.types";
 
 export default function LoginForm() {
   const router = useRouter();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -33,8 +35,15 @@ export default function LoginForm() {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const login = await mutation.mutateAsync(data);
-      const dashboardRoute = getRoleBasedDashboard(login.role.name as UserRole);
+      const response = await mutation.mutateAsync(data);
+      // Set user data from login response - no need to call /me again
+      login({
+        id: response.id,
+        email: response.email,
+        name: response.email, // Use email as name fallback
+        role: response.role.slug as UserRole,
+      });
+      const dashboardRoute = getRoleBasedDashboard(response.role.slug as UserRole);
       router.push(dashboardRoute);
     } catch (err: unknown) {
       console.error("Login failed:", err);
