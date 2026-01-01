@@ -47,6 +47,7 @@ export default function LoginForm() {
       const dashboardRoute = getRoleBasedDashboard(
         response?.role?.slug as UserRole
       );
+      console.log("dashboardRoute", dashboardRoute);
 
       router.push(dashboardRoute);
     } catch (err: unknown) {
