@@ -84,8 +84,9 @@ export const loadTruckTypes = async (
 
     let truckTypes = [];
     let hasMore = false;
-
-    truckTypes = response?.data?.data?.data || [];
+    console.log('response',response.data.data);
+    
+    truckTypes = response?.data?.data || [];
     hasMore = response.data?.data?.hasMore || false;
 
     interface TruckTypeRaw {
@@ -110,7 +111,7 @@ export const loadTruckTypes = async (
           label: (
             <div className="d-flex align-items-center gap-2">
               <Image
-                src={`${NEXT_BACKEND_SERVER_URL}${item.image_url}`}
+                src={`${item.image_url}`}
                 alt={item.name}
                 width={24}
                 height={24}
