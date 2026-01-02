@@ -39,7 +39,7 @@ export default function LoginForm() {
 
       // Set user data from login response - no need to call /me again
       login({
-        id: response?.id,
+        id: response?.userId,
         email: response?.email,
         name: response?.fullName, // Use email as name fallback
         role: response?.role?.slug as UserRole,
